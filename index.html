@@ -163,12 +163,28 @@ function sanitizePy(src){
   src=src.replace(/^\s*from tkinter import.*$/mg,'');
   src=src.replace(/^\s*from this import.*$/mg,'');
   sub2('screensize','[^)]*');
+  sub2('setup','[^)]*');
   sub2('title','[^)]*');
+  sub2('exitonclick','[^)]*');
+  src=src.replace(/[\w.]+\.\s*exitoncli\w*\s*(\([^)]*\))?/g,'pass');
+  src=src.replace(/[\w.]+\.\s*quit\s*\(\s*\)/g,'pass');
+  src=src.replace(/[\w.]+\.\s*bgcolor\s*\([^)]*\)/g,'pass');
+  src=src.replace(/(?<![\w.])bgcolor\s*\([^)]*\)/g,'pass');
   src=src.replace(/[\w.]+\.\s*shape\s*\(\s*['"]blank['"]\s*\)/g,'pass');
   src=src.replace(/(?<![\w.])shape\s*\(\s*['"]blank['"]\s*\)/g,'pass');
   src=src.replace(/\btime\.sleep\s*\([^)]*\)/g,'pass');
+  src=src.replace(/^(\s*)while\s*\(\s*([A-Za-z_]\w*)\s*<=\s*(\d+)\s*\)\s*:/mg,'$1for $2 in range($3+1):');
+  src=src.replace(/^(\s*)while\s+([A-Za-z_]\w*)\s*<=\s*(\d+)\s*:/mg,'$1for $2 in range($3+1):');
   src=src.replace(/^(\s*)while True:/mg,'$1for __demo_i in range(30):');
+  src=src.replace(/([\w.]+\s*\.\s*)Pen\s*\(/g,'$1Turtle(');
+  src=src.replace(/(?<![\w.])Pen\s*\(/g,'Turtle(');
+  src=src.replace(/([\w.]+\s*\.\s*)speed\s*\([^)]*\)/g,'$1speed(0)');
+  src=src.replace(/(?<![\w.])speed\s*\([^)]*\)/g,'speed(0)');
   return src;
+}
+function extractBg(src){
+  var m=src.match(/[\w.]*\.?\s*bgcolor\s*\(\s*["']([^"']+)["']\s*\)/);
+  return m?m[1]:null;
 }
 function ensureShims(){
   if(window._skShims)return;
@@ -182,25 +198,29 @@ function runProject(n,btn,done){
   var p=null;for(var i=0;i<PROJECTS.length;i++){if(PROJECTS[i].n===n){p=PROJECTS[i];break;}}
   var demo=document.getElementById('demo-'+n),st=document.getElementById('status-'+n),
       holder=document.getElementById('turtle-'+n),log=document.getElementById('log-'+n);
+  function fail(msg){st.textContent=msg;window._running=false;if(btn)btn.disabled=false;if(done)done(false,msg);}
+  try{
   demo.style.display='block';log.textContent='';holder.innerHTML='';
+  var bg=extractBg(p.code);
+  holder.style.background=bg||'#101418';
   demo.scrollIntoView({behavior:'smooth',block:'nearest'});
-  if(typeof Sk==='undefined'){st.textContent='❌ Skulpt nuk u ngarkua (nevojitet internet).';if(done)done(false,'no-skulpt');return;}
-  if(window._running){st.textContent='⏳ Prit — një demo tjetër po ekzekutohet…';if(done)done(false,'busy');return;}
+  if(typeof Sk==='undefined'){fail('❌ Skulpt nuk u ngarkua (nevojitet internet).');return;}
+  if(window._running){fail('⏳ Prit — një demo tjetër po ekzekutohet…');return;}
   ensureShims();
   window._running=true;if(btn)btn.disabled=true;
   st.textContent='⏳ Po ekzekutohet Python në browser…';
-  Sk.python3=true;
   Sk.configure({
     output:function(t){log.textContent+=t;},
     read:function(x){if(Sk.builtinFiles.files[x]===undefined)throw "File not found: '"+x+"'";return Sk.builtinFiles.files[x];},
     execLimit:45000
   });
-  Sk.TurtleGraphics={target:'turtle-'+n,width:680,height:680};
+  Sk.TurtleGraphics={target:'turtle-'+n,width:680,height:680,animate:false};
   var prog=sanitizePy(p.code);
   var t0=Date.now();
   Sk.misceval.asyncToPromise(function(){return Sk.importMainWithBody('<stdin>',false,prog,true);})
     .then(function(){st.textContent='✅ U krye live në browser ('+((Date.now()-t0)/1000).toFixed(1)+'s). Kodi origjinal nuk ndryshohet — demo ekzekuton një kopje të sigurt.';window._running=false;if(btn)btn.disabled=false;if(done)done(true,'');})
-    .catch(function(e){var m=String(e&&e.toString?e.toString():e).split('\n')[0];st.textContent='⚠️ '+m;window._running=false;if(btn)btn.disabled=false;if(done)done(false,m);});
+    .catch(function(e){var m=String(e&&e.toString?e.toString():e).split('\n')[0];fail('⚠️ '+m);});
+  }catch(e){fail('⚠️ '+String(e&&e.message?e.message:e).split('\n')[0]);}
 }
 /* ---------- self-test (?selftest=1) ---------- */
 (function(){
