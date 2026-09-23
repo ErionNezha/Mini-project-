@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>12. Yje shumëngjyrëshe — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">12</span>Yje shumëngjyrëshe</h1></header>
+<main><p class="desc">Yje 150-këndëshe të ndërthurura me 7 ngjyra.</p><div class="stage"><canvas id="c" width="1000" height="800"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 0.6, ox: -270, oy: 98});
+  t.bgcolor('black');
+  t.penup();
+  t.left(90);
+  t.goto(0, 0);
+  t.forward(100);
+  t.left(180);
+  t.pendown();
+  const groups = [
+    ['red', 100], ['dark blue', 102], ['dark violet', 104], ['dark red', 106],
+    ['dark orange', 104], ['dark blue', 102], ['dark grey', 100],
+    ['red', 100], ['dark blue', 102], ['dark violet', 104], ['dark red', 106],
+    ['dark orange', 104], ['dark blue', 102], ['dark grey', 100]
+  ];
+  for(let j=0; j<=5; j++){
+    groups.forEach(([col, len], idx) => {
+      t.pencolor(col);
+      for(let i=0; i<150; i++){
+        t.forward(len);
+        if(idx % 2 === 0) t.left(111);
+        else t.right(111);
+      }
+      t.penup();
+      t.right((idx % 2 === 0 ? 90 : 180) * j);
+      t.pendown();
+    });
+  }
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
