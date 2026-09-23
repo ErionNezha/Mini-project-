@@ -1,14 +1,595 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1. Personazhi vizatimor — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">1</span>Personazhi vizatimor</h1></header>
-<main><p class="desc">Personazh vizatimor i vizatuar me breshkë: këmisha e kuqe, koka, duart dhe një robot shoqërues.</p><div class="stage"><canvas id="c" width="760" height="900"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. Personazhi vizatimor — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">1</span>Personazhi vizatimor</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Personazh vizatimor i vizatuar me breshkë: këmisha e kuqe, koka, duart dhe një robot shoqërues.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="760" height="900"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 1.py</span></div>
+<pre><code id="pycode"><span class="c-kw">from</span> turtle <span class="c-kw">import</span> *
+<span class="c-com">#import time</span>
+s=Screen()
+s.screensize(<span class="c-num">700</span>,<span class="c-num">1000</span>)
+<span class="c-com">#coderwithfun</span>
+speed(<span class="c-num">5</span>)
+<span class="c-kw">def</span> myPosition(x, y):
+    penup()
+    goto(x, y)
+    pendown()
+<span class="c-com">#time.sleep(10)</span>
+<span class="c-com">#ht()</span>
+pensize(<span class="c-num">2</span>)
+<span class="c-kw">def</span> vishal():
+    fillcolor(<span class="c-str">'#ffec40'</span>)
+    begin_fill()
+    right(<span class="c-num">25</span>)
+    forward(<span class="c-num">20</span>)
+    <span class="c-com">#vishal</span>
+    right(<span class="c-num">45</span>)
+    forward(<span class="c-num">20</span>)
+    left(<span class="c-num">70</span>)
+    forward(<span class="c-num">90</span>)
+    left(<span class="c-num">95</span>)
+    forward(<span class="c-num">75</span>)
+    left(<span class="c-num">85</span>)
+    forward(<span class="c-num">175</span>)
+    left(<span class="c-num">85</span>)
+    forward(<span class="c-num">75</span>)
+    left(<span class="c-num">95</span>)
+    forward(<span class="c-num">90</span>)
+    left(<span class="c-num">85</span>)
+    forward(<span class="c-num">18</span>)
+    end_fill()
+
+<span class="c-kw">def</span> leftLeg():
+    myPosition(-<span class="c-num">39</span>,-<span class="c-num">25</span>)
+    fillcolor(<span class="c-str">"#ffd699"</span>)
+    begin_fill()
+    right(<span class="c-num">89</span>)
+    forward(<span class="c-num">25</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">50</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">20</span>)
+    right(<span class="c-num">85</span>)
+    forward(<span class="c-num">50</span>)
+    end_fill()
+
+<span class="c-kw">def</span> leftSock():
+    myPosition(-<span class="c-num">36</span>,-<span class="c-num">78</span>)
+    fillcolor(<span class="c-str">"#ffffff"</span>)
+    begin_fill()
+    right(<span class="c-num">90</span>)
+    circle(<span class="c-num">80</span>,<span class="c-num">13</span>)
+    right(<span class="c-num">110</span>)
+    forward(<span class="c-num">22</span>)
+    right(<span class="c-num">85</span>)
+    forward(<span class="c-num">19</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">21</span>)
+    end_fill()
+
+<span class="c-kw">def</span> leftShoe():
+    myPosition(-<span class="c-num">69</span>,-<span class="c-num">112</span>)
+    fillcolor(<span class="c-str">"#b5ae60"</span>)
+    begin_fill()
+    right(<span class="c-num">90</span>)
+    left(<span class="c-num">5</span>)
+    forward(<span class="c-num">56</span>)
+    left(<span class="c-num">105</span>)
+    forward(<span class="c-num">13</span>)
+    left(<span class="c-num">75</span>)
+    forward(<span class="c-num">20</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">15</span>)
+    circle(<span class="c-num">10</span>,<span class="c-num">15</span>)
+    left(<span class="c-num">80</span>)
+    forward(<span class="c-num">4</span>)
+    circle(<span class="c-num">10</span>,<span class="c-num">15</span>)
+    left(<span class="c-num">40</span>)
+    circle(<span class="c-num">20</span>,<span class="c-num">15</span>)
+    forward(<span class="c-num">10</span>)
+    right(<span class="c-num">45</span>)
+    forward(<span class="c-num">15</span>)
+    circle(<span class="c-num">25</span>,<span class="c-num">25</span>)
+    end_fill()
+
+<span class="c-kw">def</span> rightLeg():
+    myPosition(<span class="c-num">60</span>,-<span class="c-num">28</span>)
+    fillcolor(<span class="c-str">"#ffd699"</span>)
+    begin_fill()
+    <span class="c-com">#right(90)</span>
+    left(<span class="c-num">128</span>)
+    forward(<span class="c-num">25</span>)
+    right(<span class="c-num">95</span>)
+    forward(<span class="c-num">55</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">20</span>)
+    right(<span class="c-num">85</span>)
+    forward(<span class="c-num">55</span>)
+    end_fill()
+
+<span class="c-kw">def</span> rightSock():
+    myPosition(<span class="c-num">64</span>,-<span class="c-num">79</span>)
+    fillcolor(<span class="c-str">"#ffffff"</span>)
+    begin_fill()
+    right(<span class="c-num">90</span>)
+    circle(<span class="c-num">90</span>,<span class="c-num">14</span>)
+    right(<span class="c-num">110</span>)
+    forward(<span class="c-num">23</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">15</span>)
+    right(<span class="c-num">80</span>)
+    forward(<span class="c-num">21</span>)
+    <span class="c-com">#vishal</span>
+    end_fill()
+
+<span class="c-kw">def</span> rightShoe():
+    myPosition(<span class="c-num">64</span>,-<span class="c-num">108</span>)
+    fillcolor(<span class="c-str">"#b5ae60"</span>)
+    begin_fill()
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">56</span>)
+    left(<span class="c-num">160</span>)
+    forward(<span class="c-num">25</span>)
+    right(<span class="c-num">68</span>)
+    forward(<span class="c-num">17</span>)
+    left(<span class="c-num">90</span>)
+    circle(<span class="c-num">18</span>,<span class="c-num">15</span>)
+    forward(<span class="c-num">5</span>)
+    left(<span class="c-num">75</span>)
+    forward(<span class="c-num">11</span>)
+    right(<span class="c-num">85</span>)
+    forward(<span class="c-num">20</span>)
+    left(<span class="c-num">45</span>)
+    circle(<span class="c-num">10</span>,<span class="c-num">30</span>)
+    left(<span class="c-num">25</span>)
+    forward(<span class="c-num">5</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myShirt():
+    myPosition(-<span class="c-num">75</span>,<span class="c-num">48</span>)
+    fillcolor(<span class="c-str">"red"</span>)
+    begin_fill()
+    left(<span class="c-num">72</span>)
+    forward(<span class="c-num">185</span>)
+    left(<span class="c-num">87</span>)
+    forward(<span class="c-num">75</span>)
+    right(<span class="c-num">68</span>)
+    circle(<span class="c-num">20</span>,<span class="c-num">8</span>)
+    circle(<span class="c-num">300</span>,<span class="c-num">23</span>)
+    left(<span class="c-num">90</span>)
+    circle(<span class="c-num">35</span>,<span class="c-num">17</span>)
+    right(<span class="c-num">38</span>)
+    circle(<span class="c-num">35</span>,<span class="c-num">17</span>)
+    left(<span class="c-num">58</span>)
+    forward(<span class="c-num">75</span>)
+    right(<span class="c-num">12</span>)
+    forward(<span class="c-num">140</span>)
+    right(<span class="c-num">40</span>)
+    forward(<span class="c-num">93</span>)
+    left(<span class="c-num">120</span>)
+    circle(-<span class="c-num">20</span>,<span class="c-num">65</span>)
+    left(<span class="c-num">75</span>)
+    forward(<span class="c-num">10</span>)
+    left(<span class="c-num">23</span>)
+    forward(<span class="c-num">88</span>)
+    <span class="c-com">#circle(-80,10)</span>
+    right(<span class="c-num">31</span>)
+    forward(<span class="c-num">87</span>)
+    right(<span class="c-num">180</span>)
+    forward(<span class="c-num">108</span>)
+    right(<span class="c-num">180</span>)
+    forward(<span class="c-num">104</span>)
+    circle(<span class="c-num">10</span>,<span class="c-num">70</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myHead():
+    myPosition(-<span class="c-num">20</span>,<span class="c-num">295</span>)
+    left(<span class="c-num">20</span>)
+    pensize(<span class="c-num">2</span>)
+    fillcolor(<span class="c-str">'#fcc6a0'</span>)
+    begin_fill()
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">40</span>)
+    right(<span class="c-num">90</span>)
+    circle(<span class="c-num">50</span>,<span class="c-num">80</span>)
+    left(<span class="c-num">10</span>)
+    circle(<span class="c-num">50</span>,<span class="c-num">80</span>)
+    left(<span class="c-num">2</span>)
+    circle(<span class="c-num">200</span>,<span class="c-num">50</span>)
+
+    left(<span class="c-num">48</span>)
+    forward(<span class="c-num">60</span>)
+    <span class="c-com">#left(20)</span>
+    circle(<span class="c-num">45</span>,<span class="c-num">60</span>)
+    right(<span class="c-num">5</span>)
+    circle(<span class="c-num">100</span>,<span class="c-num">85</span>)
+    end_fill()
+    fillcolor(<span class="c-str">'black'</span>)
+    begin_fill()
+
+    pensize(<span class="c-num">2</span>)
+    right(<span class="c-num">170</span>)
+    circle(-<span class="c-num">100</span>,<span class="c-num">165</span>)
+    right(<span class="c-num">78</span>)
+    forward(<span class="c-num">26</span>)
+    right(<span class="c-num">87</span>)
+    forward(<span class="c-num">55</span>)
+    circle(<span class="c-num">45</span>,<span class="c-num">60</span>)
+    right(<span class="c-num">5</span>)
+    circle(<span class="c-num">100</span>,<span class="c-num">85</span>)
+    end_fill()
+
+    fillcolor(<span class="c-str">'#fcc6a0'</span>)
+    begin_fill()
+    right(<span class="c-num">180</span>)
+    circle(-<span class="c-num">100</span>,<span class="c-num">105</span>)
+    right(<span class="c-num">37</span>)
+    forward(<span class="c-num">49</span>)
+    pensize(<span class="c-num">2</span>)
+    left(<span class="c-num">130</span>)
+    forward(<span class="c-num">30</span>)
+    <span class="c-com">#right(5)</span>
+    circle(-<span class="c-num">10</span>,<span class="c-num">70</span>)
+    right(<span class="c-num">50</span>)
+    <span class="c-com">#circle(10,10)</span>
+    forward(<span class="c-num">36</span>)
+    right(<span class="c-num">80</span>)
+    forward(<span class="c-num">50</span>)
+    pencolor(<span class="c-str">'#fcc6a0'</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">30</span>)
+    
+    end_fill()
+
+<span class="c-kw">def</span> rightHand():
+    <span class="c-com">#left(35)</span>
+    myPosition(<span class="c-num">197</span>,<span class="c-num">209</span>)
+    pencolor(<span class="c-str">'black'</span>)
+    fillcolor(<span class="c-str">'#fcc6a0'</span>)
+    begin_fill()
+    right(<span class="c-num">45</span>)
+    forward(<span class="c-num">6</span>)
+    left(<span class="c-num">55</span>)
+    forward(<span class="c-num">20</span>)
+    circle(-<span class="c-num">5</span>,<span class="c-num">70</span>)
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">18</span>)
+    left(<span class="c-num">105</span>)
+    forward(<span class="c-num">18</span>)
+    circle(-<span class="c-num">5</span>,<span class="c-num">70</span>)
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">18</span>)
+    left(<span class="c-num">145</span>)
+    forward(<span class="c-num">15</span>)
+    circle(-<span class="c-num">5</span>,<span class="c-num">70</span>)
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">18</span>)
+
+    left(<span class="c-num">150</span>)
+    forward(<span class="c-num">13</span>)
+    circle(-<span class="c-num">5</span>,<span class="c-num">70</span>)
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">15</span>)
+
+    left(<span class="c-num">150</span>)
+    forward(<span class="c-num">10</span>)
+    circle(-<span class="c-num">5</span>,<span class="c-num">70</span>)
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">12</span>)
+    circle(<span class="c-num">60</span>,<span class="c-num">10</span>)
+    left(<span class="c-num">45</span>)
+    forward(<span class="c-num">6</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">10</span>)
+    end_fill()
+
+<span class="c-kw">def</span> leftHand():
+    myPosition(-<span class="c-num">94</span>,<span class="c-num">242</span>)
+    fillcolor(<span class="c-str">'#fcc6a0'</span>)
+    begin_fill()
+    right(<span class="c-num">10</span>)
+    forward(<span class="c-num">6</span>)
+    left(<span class="c-num">90</span>)
+    penup()
+    forward(<span class="c-num">12</span>)
+    pendown()
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">8</span>)
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">12</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myBis():
+    myPosition(-<span class="c-num">103</span>,<span class="c-num">291</span>)
+    right(<span class="c-num">90</span>)
+    fillcolor(<span class="c-str">'#02d302'</span>)
+    begin_fill()
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">55</span>)
+    left(<span class="c-num">80</span>)
+    forward(<span class="c-num">12</span>)
+    left(<span class="c-num">10</span>)
+    forward(<span class="c-num">17</span>)
+    left(<span class="c-num">10</span>)
+    forward(<span class="c-num">12</span>)
+    left(<span class="c-num">80</span>)
+    forward(<span class="c-num">55</span>)
+    left(<span class="c-num">80</span>)
+    forward(<span class="c-num">12</span>)
+    left(<span class="c-num">10</span>)
+    forward(<span class="c-num">17</span>)
+    left(<span class="c-num">10</span>)
+    forward(<span class="c-num">12</span>)
+    left(<span class="c-num">80</span>)
+    left(<span class="c-num">80</span>)
+    forward(<span class="c-num">12</span>)
+    left(<span class="c-num">10</span>)
+    forward(<span class="c-num">17</span>)
+    left(<span class="c-num">10</span>)
+    forward(<span class="c-num">12</span>)
+    end_fill()
+    penup()
+    right(<span class="c-num">100</span>)
+    forward(<span class="c-num">20</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">14</span>)
+    pendown()
+    pencolor(<span class="c-str">'#9c5e4a'</span>)
+    fillcolor(<span class="c-str">'#9c5e4a'</span>)
+    begin_fill()
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">5</span>):
+        forward(<span class="c-num">15</span>)
+        right(<span class="c-num">144</span>)
+    end_fill()
+    penup()
+    forward(<span class="c-num">27</span>)
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">16</span>)
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">7</span>)
+    pendown()
+    fillcolor(<span class="c-str">'#9c5e4a'</span>)
+    begin_fill()
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">5</span>):
+        forward(<span class="c-num">10</span>)
+        right(<span class="c-num">144</span>)
+    end_fill()
+    penup()
+    forward(<span class="c-num">20</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">5</span>)
+    pendown()
+    fillcolor(<span class="c-str">'#9c5e4a'</span>)
+    begin_fill()
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">5</span>):
+        forward(<span class="c-num">10</span>)
+        right(<span class="c-num">144</span>)
+    end_fill()
+    penup()
+    right(<span class="c-num">180</span>)
+    forward(<span class="c-num">6</span>)
+    pendown()
+    fillcolor(<span class="c-str">'#9c5e4a'</span>)
+    begin_fill()
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">5</span>):
+        forward(<span class="c-num">10</span>)
+        right(<span class="c-num">144</span>)
+    end_fill()
+
+<span class="c-kw">def</span> leftHand2():
+    myPosition(-<span class="c-num">112</span>,<span class="c-num">284</span>)
+    pencolor(<span class="c-str">'black'</span>)
+    fillcolor(<span class="c-str">'#fcc6a0'</span>)
+    begin_fill()
+    right(<span class="c-num">180</span>)
+    forward(<span class="c-num">31</span>)
+    left(<span class="c-num">90</span>)
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">2</span>): 
+        circle(<span class="c-num">4</span>,<span class="c-num">90</span>) 
+        <span class="c-com">#circle(4//2,45)</span>
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">3</span>):
+        right(<span class="c-num">180</span>)
+        <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">2</span>): 
+            circle(<span class="c-num">4</span>,<span class="c-num">90</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myMouth():
+    myPosition(-<span class="c-num">25</span>,<span class="c-num">200</span>)
+    left(<span class="c-num">65</span>)
+    fillcolor(<span class="c-str">'#77332e'</span>)
+    begin_fill()
+    <span class="c-com">#circle(20)</span>
+    <span class="c-com">#forward(20)</span>
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">2</span>): 
+        circle(<span class="c-num">25</span>,<span class="c-num">90</span>) 
+        circle(<span class="c-num">25</span>//<span class="c-num">2</span>,<span class="c-num">90</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myEyebrow(x,y):
+    myPosition(x,y)
+    pensize(<span class="c-num">18</span>)
+    right(<span class="c-num">150</span>)
+    forward(<span class="c-num">25</span>)
+    right(<span class="c-num">90</span>)
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">1</span>):
+        right(<span class="c-num">45</span>)
+        dot(<span class="c-num">15</span>)
+    left(<span class="c-num">55</span>)
+    forward(<span class="c-num">25</span>)
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">1</span>):
+        right(<span class="c-num">45</span>)
+        dot(<span class="c-num">15</span>)
+
+<span class="c-kw">def</span> myEyelid(x,y):
+    myPosition(x,y)
+    pensize(<span class="c-num">2</span>)
+    left(<span class="c-num">170</span>)
+    circle(-<span class="c-num">23</span>,<span class="c-num">180</span>)
+
+<span class="c-kw">def</span> myallEyes1(x,y):
+    myPosition(x,y)
+    right(<span class="c-num">90</span>)
+    fillcolor(<span class="c-str">'#000000'</span>)
+    begin_fill()
+    circle(<span class="c-num">18</span>)
+    end_fill()
+    left(<span class="c-num">90</span>)
+    penup()
+    forward(<span class="c-num">19</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">7</span>)
+    pendown()
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    left(<span class="c-num">90</span>)
+    circle(<span class="c-num">9</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myallEyes2(x,y):
+    myPosition(x,y)
+    right(<span class="c-num">90</span>)
+    fillcolor(<span class="c-str">'#000000'</span>)
+    begin_fill()
+    circle(<span class="c-num">18</span>)
+    end_fill()
+    left(<span class="c-num">90</span>)
+    penup()
+    forward(<span class="c-num">19</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">8</span>)
+    pendown()
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    left(<span class="c-num">90</span>)
+    circle(<span class="c-num">9</span>)
+    end_fill()
+
+<span class="c-kw">def</span> myRobot():
+    myPosition(<span class="c-num">155</span>,-<span class="c-num">105</span>)
+    left(<span class="c-num">93</span>)
+    color(<span class="c-str">'red'</span>)
+    pensize(<span class="c-num">7</span>)
+
+    begin_fill()
+    forward(<span class="c-num">50</span>)
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">50</span>)
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">50</span>)
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">50</span>)
+    left(<span class="c-num">90</span>)
+    end_fill()
+
+
+    color(<span class="c-str">'white'</span>)
+    penup()
+    left(<span class="c-num">90</span>)
+    forward(<span class="c-num">30</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">12</span>)
+    pendown()
+    pensize(<span class="c-num">3</span>)
+    circle(<span class="c-num">5</span>)
+    penup()
+    forward(<span class="c-num">25</span>)
+    pendown()
+    circle(<span class="c-num">5</span>)
+
+    penup()
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">20</span>)
+    right(<span class="c-num">90</span>)
+    pendown()
+
+    begin_fill()
+    forward(<span class="c-num">23</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">7</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">23</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">7</span>)
+    right(<span class="c-num">90</span>)
+    end_fill()
+
+    penup()
+    forward(<span class="c-num">25</span>)
+    right(<span class="c-num">90</span>)
+    forward(<span class="c-num">35</span>)
+    pendown()
+
+    color(<span class="c-str">'red'</span>)
+    forward(<span class="c-num">30</span>)
+    penup()
+    right(<span class="c-num">90</span>)
+    pendown()
+    begin_fill()
+    circle(<span class="c-num">5</span>)
+    end_fill()
+
+<span class="c-kw">def</span> allLegs():
+    leftLeg()
+    leftSock()
+    leftShoe()
+    rightLeg()
+    rightSock()
+    rightShoe()
+<span class="c-kw">def</span> allHands():
+    rightHand()
+    leftHand()
+    myBis()
+    leftHand2()
+<span class="c-kw">def</span> allEyebrows():
+    myEyebrow(-<span class="c-num">8</span>,<span class="c-num">300</span>)
+    right(<span class="c-num">90</span>)
+    myEyebrow(<span class="c-num">72</span>,<span class="c-num">300</span>)
+    myEyelid(-<span class="c-num">9</span>,<span class="c-num">270</span>)
+    left(<span class="c-num">15</span>)
+    myEyelid(<span class="c-num">68</span>,<span class="c-num">265</span>)    
+<span class="c-kw">def</span> allEyes():
+    myallEyes1(<span class="c-num">17</span>,<span class="c-num">275</span>)
+    myallEyes2(<span class="c-num">95</span>,<span class="c-num">270</span>)
+vishal()
+allLegs()
+myShirt()
+myHead()
+allHands()
+myMouth()
+allEyebrows()
+allEyes()
+myRobot()
+ht()
+done()</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
-function draw(){
-  const t = new Turtle('c', {scale: 1.1, oy: -80});
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
+
+const PAGE_OPTS = {scale: 1.1, oy: -80};
+function draw(t){
   t.bgcolor('white');
   t.pensize(2);
 
@@ -393,6 +974,25 @@ function draw(){
   allEyes();
   myRobot();
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
