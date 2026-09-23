@@ -1,14 +1,104 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>23. Panda — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">23</span>Panda</h1></header>
-<main><p class="desc">Fytyrë e thjeshtë panda mbi sfond të verdhë.</p><div class="stage"><canvas id="c" width="600" height="600"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>23. Panda — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">23</span>Panda</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Fytyrë e thjeshtë panda mbi sfond të verdhë.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="600" height="600"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 23.py</span></div>
+<pre><code id="pycode"><span class="c-kw">import</span> turtle
+<span class="c-com">#developer.varun (instagram)</span>
+t = turtle.Turtle()
+turtle.Screen().bgcolor(<span class="c-str">"yellow"</span>)
+<span class="c-kw">def</span> circles(color, radius):
+    <span class="c-com"># Set the fill</span>
+    t.fillcolor(color)
+    <span class="c-com"># Start filling the color</span>
+    t.begin_fill()
+    <span class="c-com"># Draw a circle</span>
+    t.circle(radius)
+    <span class="c-com"># Ending the filling of the color</span>
+    t.end_fill()
+<span class="c-com"># Draw first ear</span>
+t.up()
+t.setpos(-<span class="c-num">35</span>, <span class="c-num">95</span>)
+t.down
+circles(<span class="c-str">'black'</span>, <span class="c-num">15</span>)
+<span class="c-com"># Draw second ear</span>
+t.up()
+t.setpos(<span class="c-num">35</span>, <span class="c-num">95</span>)
+t.down()
+circles(<span class="c-str">'black'</span>, <span class="c-num">15</span>)
+<span class="c-com">#....... Draw face ......#</span>
+t.up()
+t.setpos(<span class="c-num">0</span>, <span class="c-num">35</span>)
+t.down()
+circles(<span class="c-str">'white'</span>, <span class="c-num">40</span>)
+<span class="c-com">#-------Draw eyes black-------#</span>
+<span class="c-com"># Draw first eye</span>
+t.up()
+t.setpos(-<span class="c-num">18</span>, <span class="c-num">75</span>)
+t.down
+circles(<span class="c-str">'black'</span>, <span class="c-num">8</span>)
+<span class="c-com"># Draw second eye</span>
+t.up()
+t.setpos(<span class="c-num">18</span>, <span class="c-num">75</span>)
+t.down()
+circles(<span class="c-str">'black'</span>, <span class="c-num">8</span>)
+<span class="c-com">#-------Draw eyes white-------#</span>
+<span class="c-com"># Draw first eye</span>
+t.up()
+t.setpos(-<span class="c-num">18</span>, <span class="c-num">77</span>)
+t.down()
+circles(<span class="c-str">'white'</span>, <span class="c-num">4</span>)
+<span class="c-com"># Draw second eye</span>
+t.up()
+t.setpos(<span class="c-num">18</span>, <span class="c-num">77</span>)
+t.down()
+circles(<span class="c-str">'white'</span>, <span class="c-num">4</span>)
+<span class="c-com">#-------Draw nose-------#</span>
+t.up()
+t.setpos(<span class="c-num">0</span>, <span class="c-num">55</span>)
+t.down
+circles(<span class="c-str">'black'</span>, <span class="c-num">5</span>)
+<span class="c-com">#-------Draw mouth-------#</span>
+t.setpos(<span class="c-num">0</span>, <span class="c-num">55</span>)
+t.down()
+t.right(<span class="c-num">90</span>)
+t.circle(<span class="c-num">5</span>, <span class="c-num">180</span>)
+t.up()
+t.setpos(<span class="c-num">0</span>, <span class="c-num">55</span>)
+t.down()
+t.left(<span class="c-num">360</span>)
+t.circle(<span class="c-num">5</span>, -<span class="c-num">180</span>)
+t.hideturtle()</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
-function draw(){
-  const t = new Turtle('c', {scale: 2});
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
+
+const PAGE_OPTS = {scale: 2};
+function draw(t){
   t.bgcolor('yellow');
   function circles(color, radius){
     t.fillcolor(color);
@@ -34,6 +124,25 @@ function draw(){
   t.penup(); t.goto(0, 55); t.pendown(); t.left(360); t.circle(5, -180);
   t.hideturtle();
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
