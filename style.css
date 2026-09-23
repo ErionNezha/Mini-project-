@@ -15,6 +15,58 @@ button { background: transparent; color: var(--gold); border: 1px solid var(--go
 button:hover { background: var(--gold); color: #111; }
 footer { text-align: center; padding: 22px; color: var(--muted); border-top: 1px solid #23232e; font-size: .9rem; }
 footer strong { color: var(--gold); }
+/* ====== faqet e projekteve: layout premium me kod anash ====== */
+.proj-top { flex-wrap: wrap; row-gap: 12px; }
+.proj-main { max-width: 1560px; }
+.proj-layout { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 22px; align-items: start; }
+.stage { box-shadow: 0 0 40px rgba(255, 200, 87, .07), inset 0 0 60px rgba(0,0,0,.4); }
+.proj-controls { display: flex; align-items: center; gap: 14px; margin-left: auto; flex-wrap: wrap; }
+.speed-ctl { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: .85rem; }
+.speed-ctl input[type="range"] { accent-color: var(--gold); width: 130px; cursor: pointer; }
+.btn-redraw {
+  background: linear-gradient(135deg, #ffd97a, #f0a832);
+  color: #1a1206; border: none; border-radius: 12px;
+  padding: 11px 22px; font-size: 1rem; font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 18px rgba(255, 200, 87, .35);
+  transition: transform .15s, box-shadow .15s;
+}
+.btn-redraw:hover { transform: translateY(-2px); box-shadow: 0 8px 26px rgba(255, 200, 87, .5); background: linear-gradient(135deg, #ffe29a, #ffc857); color: #111; }
+.btn-redraw:active { transform: translateY(0); }
+.draw-status { font-size: .85rem; color: var(--muted); min-width: 130px; }
+.draw-status.live { color: var(--gold); }
+.draw-status.live::before { content: "● "; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: .25; } }
+/* paneli i kodit */
+.code-panel {
+  background: #0d0d14; border: 1px solid #2a2a38; border-radius: 14px;
+  overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: 0 8px 30px rgba(0,0,0,.45);
+}
+.code-head {
+  display: flex; justify-content: space-between; align-items: center; gap: 10px;
+  padding: 12px 16px; background: #15151f; border-bottom: 1px solid #2a2a38;
+  font-size: .85rem; color: var(--gold); font-weight: 600;
+}
+.code-file { color: var(--muted); font-weight: 400; font-family: 'Consolas', 'JetBrains Mono', monospace; font-size: .78rem; }
+.code-panel pre {
+  margin: 0; padding: 16px; overflow: auto;
+  max-height: 760px; font-size: .82rem; line-height: 1.65;
+  font-family: 'Consolas', 'JetBrains Mono', 'Fira Code', monospace;
+  color: #d6d6e4; white-space: pre; tab-size: 4;
+}
+.code-panel pre::-webkit-scrollbar { width: 10px; height: 10px; }
+.code-panel pre::-webkit-scrollbar-track { background: #0d0d14; }
+.code-panel pre::-webkit-scrollbar-thumb { background: #3a3a4a; border-radius: 6px; }
+.code-panel pre::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+.c-kw { color: #ffc857; font-weight: 600; }
+.c-str { color: #9ece6a; }
+.c-com { color: #63637a; font-style: italic; }
+.c-num { color: #ff9e64; }
+@media (max-width: 1020px) {
+  .proj-layout { grid-template-columns: 1fr; }
+  .code-panel pre { max-height: 420px; }
+  .proj-controls { margin-left: 0; }
+}
 /* hub */
 .hub-hero { text-align: center; padding: 40px 20px 10px; }
 .hub-hero h1 { color: var(--gold); font-size: 2.2rem; margin-bottom: 8px; }
