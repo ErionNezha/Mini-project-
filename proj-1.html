@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1. Personazhi vizatimor — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">1</span>Personazhi vizatimor</h1></header>
+<main><p class="desc">Personazh vizatimor i vizatuar me breshkë: këmisha e kuqe, koka, duart dhe një robot shoqërues.</p><div class="stage"><canvas id="c" width="760" height="900"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1.1, oy: -80});
+  t.bgcolor('white');
+  t.pensize(2);
+
+  function myPosition(x, y){ t.penup(); t.goto(x, y); t.pendown(); }
+
+  function vishal(){
+    t.fillcolor('#ffec40');
+    t.begin_fill();
+    t.right(25); t.forward(20);
+    t.right(45); t.forward(20);
+    t.left(70); t.forward(90);
+    t.left(95); t.forward(75);
+    t.left(85); t.forward(175);
+    t.left(85); t.forward(75);
+    t.left(95); t.forward(90);
+    t.left(85); t.forward(18);
+    t.end_fill();
+  }
+
+  function leftLeg(){
+    myPosition(-39,-25);
+    t.fillcolor("#ffd699");
+    t.begin_fill();
+    t.right(89); t.forward(25);
+    t.right(90); t.forward(50);
+    t.right(90); t.forward(20);
+    t.right(85); t.forward(50);
+    t.end_fill();
+  }
+
+  function leftSock(){
+    myPosition(-36,-78);
+    t.fillcolor("#ffffff");
+    t.begin_fill();
+    t.right(90); t.circle(80,13);
+    t.right(110); t.forward(22);
+    t.right(85); t.forward(19);
+    t.right(90); t.forward(21);
+    t.end_fill();
+  }
+
+  function leftShoe(){
+    myPosition(-69,-112);
+    t.fillcolor("#b5ae60");
+    t.begin_fill();
+    t.right(90); t.left(5); t.forward(56);
+    t.left(105); t.forward(13);
+    t.left(75); t.forward(20);
+    t.right(90); t.forward(15);
+    t.circle(10,15); t.left(80); t.forward(4);
+    t.circle(10,15); t.left(40); t.circle(20,15);
+    t.forward(10); t.right(45); t.forward(15);
+    t.circle(25,25);
+    t.end_fill();
+  }
+
+  function rightLeg(){
+    myPosition(60,-28);
+    t.fillcolor("#ffd699");
+    t.begin_fill();
+    t.left(128); t.forward(25);
+    t.right(95); t.forward(55);
+    t.right(90); t.forward(20);
+    t.right(85); t.forward(55);
+    t.end_fill();
+  }
+
+  function rightSock(){
+    myPosition(64,-79);
+    t.fillcolor("#ffffff");
+    t.begin_fill();
+    t.right(90); t.circle(90,14);
+    t.right(110); t.forward(23);
+    t.right(90); t.forward(15);
+    t.right(80); t.forward(21);
+    t.end_fill();
+  }
+
+  function rightShoe(){
+    myPosition(64,-108);
+    t.fillcolor("#b5ae60");
+    t.begin_fill();
+    t.right(100); t.forward(56);
+    t.left(160); t.forward(25);
+    t.right(68); t.forward(17);
+    t.left(90); t.circle(18,15);
+    t.forward(5); t.left(75); t.forward(11);
+    t.right(85); t.forward(20);
+    t.left(45); t.circle(10,30);
+    t.left(25); t.forward(5);
+    t.end_fill();
+  }
+
+  function myShirt(){
+    myPosition(-75,48);
+    t.fillcolor("red");
+    t.begin_fill();
+    t.left(72); t.forward(185);
+    t.left(87); t.forward(75);
+    t.right(68);
+    t.circle(20,8); t.circle(300,23);
+    t.left(90); t.circle(35,17);
+    t.right(38); t.circle(35,17);
+    t.left(58); t.forward(75);
+    t.right(12); t.forward(140);
+    t.right(40); t.forward(93);
+    t.left(120); t.circle(-20,65);
+    t.left(75); t.forward(10);
+    t.left(23); t.forward(88);
+    t.right(31); t.forward(87);
+    t.right(180); t.forward(108);
+    t.right(180); t.forward(104);
+    t.circle(10,70);
+    t.end_fill();
+  }
+
+  function myHead(){
+    myPosition(-20,295);
+    t.left(20);
+    t.pensize(2);
+    t.fillcolor('#fcc6a0');
+    t.begin_fill();
+    t.right(90); t.forward(40);
+    t.right(90); t.circle(50,80);
+    t.left(10); t.circle(50,80);
+    t.left(2); t.circle(200,50);
+    t.left(48); t.forward(60);
+    t.circle(45,60);
+    t.right(5); t.circle(100,85);
+    t.end_fill();
+    t.fillcolor('black');
+    t.begin_fill();
+    t.pensize(2);
+    t.right(170); t.circle(-100,165);
+    t.right(78); t.forward(26);
+    t.right(87); t.forward(55);
+    t.circle(45,60);
+    t.right(5); t.circle(100,85);
+    t.end_fill();
+    t.fillcolor('#fcc6a0');
+    t.begin_fill();
+    t.right(180); t.circle(-100,105);
+    t.right(37); t.forward(49);
+    t.pensize(2);
+    t.left(130); t.forward(30);
+    t.circle(-10,70);
+    t.right(50); t.forward(36);
+    t.right(80); t.forward(50);
+    t.pencolor('#fcc6a0');
+    t.right(90); t.forward(30);
+    t.end_fill();
+  }
+
+  function rightHand(){
+    myPosition(197,209);
+    t.pencolor('black');
+    t.fillcolor('#fcc6a0');
+    t.begin_fill();
+    t.right(45); t.forward(6);
+    t.left(55); t.forward(20);
+    t.circle(-5,70);
+    t.right(100); t.forward(18);
+    t.left(105); t.forward(18);
+    t.circle(-5,70);
+    t.right(100); t.forward(18);
+    t.left(145); t.forward(15);
+    t.circle(-5,70);
+    t.right(100); t.forward(18);
+    t.left(150); t.forward(13);
+    t.circle(-5,70);
+    t.right(100); t.forward(15);
+    t.left(150); t.forward(10);
+    t.circle(-5,70);
+    t.right(100); t.forward(12);
+    t.circle(60,10);
+    t.left(45); t.forward(6);
+    t.right(90); t.forward(10);
+    t.end_fill();
+  }
+
+  function leftHand(){
+    myPosition(-94,242);
+    t.fillcolor('#fcc6a0');
+    t.begin_fill();
+    t.right(10); t.forward(6);
+    t.left(90);
+    t.penup(); t.forward(12); t.pendown();
+    t.left(90); t.forward(8);
+    t.left(90); t.forward(12);
+    t.end_fill();
+  }
+
+  function myBis(){
+    myPosition(-103,291);
+    t.right(90);
+    t.fillcolor('#02d302');
+    t.begin_fill();
+    t.right(90); t.forward(55);
+    t.left(80); t.forward(12);
+    t.left(10); t.forward(17);
+    t.left(10); t.forward(12);
+    t.left(80); t.forward(55);
+    t.left(80); t.forward(12);
+    t.left(10); t.forward(17);
+    t.left(10); t.forward(12);
+    t.left(80); t.left(80);
+    t.forward(12);
+    t.left(10); t.forward(17);
+    t.left(10); t.forward(12);
+    t.end_fill();
+    t.penup();
+    t.right(100); t.forward(20);
+    t.right(90); t.forward(14);
+    t.pendown();
+    t.pencolor('#9c5e4a'); t.fillcolor('#9c5e4a');
+    t.begin_fill();
+    for (let i=0;i<5;i++){ t.forward(15); t.right(144); }
+    t.end_fill();
+    t.penup();
+    t.forward(27); t.left(90); t.forward(16);
+    t.left(90); t.forward(7);
+    t.pendown();
+    t.fillcolor('#9c5e4a');
+    t.begin_fill();
+    for (let i=0;i<5;i++){ t.forward(10); t.right(144); }
+    t.end_fill();
+    t.penup();
+    t.forward(20); t.right(90); t.forward(5);
+    t.pendown();
+    t.fillcolor('#9c5e4a');
+    t.begin_fill();
+    for (let i=0;i<5;i++){ t.forward(10); t.right(144); }
+    t.end_fill();
+    t.penup();
+    t.right(180); t.forward(6);
+    t.pendown();
+    t.fillcolor('#9c5e4a');
+    t.begin_fill();
+    for (let i=0;i<5;i++){ t.forward(10); t.right(144); }
+    t.end_fill();
+  }
+
+  function leftHand2(){
+    myPosition(-112,284);
+    t.pencolor('black');
+    t.fillcolor('#fcc6a0');
+    t.begin_fill();
+    t.right(180); t.forward(31);
+    t.left(90);
+    for (let i=0;i<2;i++){ t.circle(4,90); }
+    for (let i=0;i<3;i++){
+      t.right(180);
+      for (let j=0;j<2;j++){ t.circle(4,90); }
+    }
+    t.end_fill();
+  }
+
+  function myMouth(){
+    myPosition(-25,200);
+    t.left(65);
+    t.fillcolor('#77332e');
+    t.begin_fill();
+    for (let i=0;i<2;i++){ t.circle(25,90); t.circle(12,90); }
+    t.end_fill();
+  }
+
+  function myEyebrow(x,y){
+    myPosition(x,y);
+    t.pensize(18);
+    t.right(150); t.forward(25);
+    t.right(90);
+    t.right(45); t.dot(15);
+    t.left(55); t.forward(25);
+    t.right(45); t.dot(15);
+  }
+
+  function myEyelid(x,y){
+    myPosition(x,y);
+    t.pensize(2);
+    t.left(170);
+    t.circle(-23,180);
+  }
+
+  function myallEyes1(x,y){
+    myPosition(x,y);
+    t.right(90);
+    t.fillcolor('#000000');
+    t.begin_fill();
+    t.circle(18);
+    t.end_fill();
+    t.left(90);
+    t.penup(); t.forward(19);
+    t.right(90); t.forward(7);
+    t.pendown();
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.left(90); t.circle(9);
+    t.end_fill();
+  }
+
+  function myallEyes2(x,y){
+    myPosition(x,y);
+    t.right(90);
+    t.fillcolor('#000000');
+    t.begin_fill();
+    t.circle(18);
+    t.end_fill();
+    t.left(90);
+    t.penup(); t.forward(19);
+    t.right(90); t.forward(8);
+    t.pendown();
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.left(90); t.circle(9);
+    t.end_fill();
+  }
+
+  function myRobot(){
+    myPosition(155,-105);
+    t.left(93);
+    t.color('red');
+    t.pensize(7);
+    t.begin_fill();
+    t.forward(50); t.left(90);
+    t.forward(50); t.left(90);
+    t.forward(50); t.left(90);
+    t.forward(50); t.left(90);
+    t.end_fill();
+
+    t.color('white');
+    t.penup();
+    t.left(90); t.forward(30);
+    t.right(90); t.forward(12);
+    t.pendown();
+    t.pensize(3);
+    t.circle(5);
+    t.penup(); t.forward(25); t.pendown();
+    t.circle(5);
+
+    t.penup();
+    t.right(90); t.forward(20);
+    t.right(90);
+    t.pendown();
+    t.begin_fill();
+    t.forward(23); t.right(90);
+    t.forward(7); t.right(90);
+    t.forward(23); t.right(90);
+    t.forward(7); t.right(90);
+    t.end_fill();
+
+    t.penup();
+    t.forward(25); t.right(90); t.forward(35);
+    t.pendown();
+
+    t.color('red');
+    t.forward(30);
+    t.penup(); t.right(90); t.pendown();
+    t.begin_fill();
+    t.circle(5);
+    t.end_fill();
+  }
+
+  function allLegs(){ leftLeg(); leftSock(); leftShoe(); rightLeg(); rightSock(); rightShoe(); }
+  function allHands(){ rightHand(); leftHand(); myBis(); leftHand2(); }
+  function allEyebrows(){
+    myEyebrow(-8,300);
+    t.right(90);
+    myEyebrow(72,300);
+    myEyelid(-9,270);
+    t.left(15);
+    myEyelid(68,265);
+  }
+  function allEyes(){ myallEyes1(17,275); myallEyes2(95,270); }
+
+  vishal();
+  allLegs();
+  myShirt();
+  myHead();
+  allHands();
+  myMouth();
+  allEyebrows();
+  allEyes();
+  myRobot();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
