@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>17. Yll ylberi I — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">17</span>Yll ylberi I</h1></header>
+<main><p class="desc">Poligone yjesh me ngjyra të ndezura ylberi.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1});
+  t.bgcolor('black');
+  let n = 36, h = 0;
+  for (let i = 0; i < 460; i++) {
+    t.color(hsvToRgb(h, 1, 0.9));
+    h += 1 / n;
+    t.left(145);
+    for (let j = 0; j < 5; j++) {
+      t.forward(300);
+      t.left(150);
+    }
+  }
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); draw(); };
+</script></body></html>
