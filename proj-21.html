@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>21. Syri Sharingan — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">21</span>Syri Sharingan</h1></header>
+<main><p class="desc">Syri i kuq Sharingan me tre tomoe.</p><div class="stage"><canvas id="c" width="700" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1});
+  t.bgcolor('#bf0404');
+  t.pensize(10);
+  // rrethi i jashtëm i zi
+  t.color('black');
+  t.penup(); t.goto(0, 200); t.pendown();
+  t.fillcolor('black'); t.begin_fill(); t.circle(-200); t.end_fill();
+  // tre petalet e kuqe
+  t.color('black');
+  t.penup(); t.goto(0, 190); t.pendown(); t.setheading(-60);
+  t.fillcolor('red'); t.begin_fill(); t.circle(-380, 60); t.right(120); t.circle(-380, 60); t.end_fill();
+  t.penup(); t.goto(-164.5, 95); t.setheading(0);
+  t.fillcolor('red'); t.begin_fill(); t.circle(-380, 60); t.right(120); t.circle(-380, 60); t.end_fill();
+  t.color('black');
+  t.penup(); t.goto(170.5, 100); t.setheading(-118); t.pendown();
+  t.fillcolor('red'); t.begin_fill(); t.circle(-380, 60); t.right(120); t.circle(-380, 60); t.end_fill();
+  // konturet e zeza të petaleve (pa fill, vetëm circle)
+  t.color('black');
+  t.penup(); t.goto(0, 190); t.pendown(); t.setheading(-60);
+  t.circle(-380, 60); t.right(120); t.circle(-380, 60);
+  t.penup(); t.goto(-164.5, 95); t.setheading(0); t.pendown();
+  t.circle(-380, 60); t.right(120); t.circle(-380, 60);
+  t.penup(); t.goto(170.5, 100); t.setheading(-118); t.pendown();
+  t.circle(-380, 60); t.right(120); t.circle(-380, 60);
+  t.penup();
+  // bebëza
+  t.goto(5, -14); t.pendown();
+  t.fillcolor('black'); t.begin_fill(); t.circle(13); t.end_fill();
+  t.hideturtle();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
