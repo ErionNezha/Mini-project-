@@ -1,14 +1,345 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>8. Doraemon — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">8</span>Doraemon</h1></header>
-<main><p class="desc">Doraemon — macja robot vizatimor, i vizatuar me breshkë.</p><div class="stage"><canvas id="c" width="900" height="800"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8. Doraemon — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">8</span>Doraemon</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Doraemon — macja robot vizatimor, i vizatuar me breshkë.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="900" height="800"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 8.py</span></div>
+<pre><code id="pycode"><span class="c-kw">from</span> turtle <span class="c-kw">import</span> *
+
+
+<span class="c-com"># Doraemon with Python Turtle</span>
+<span class="c-kw">def</span> vishal(x, y):
+    penup()
+    goto(x, y)
+    pendown()
+
+
+<span class="c-kw">def</span> aankh():
+    fillcolor(<span class="c-str">"#ffffff"</span>)
+    begin_fill()
+
+    tracer(<span class="c-kw">False</span>)
+    a = <span class="c-num">2.5</span>
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">120</span>):
+        <span class="c-kw">if</span> <span class="c-num">0</span> &lt;= i &lt; <span class="c-num">30</span> <span class="c-kw">or</span> <span class="c-num">60</span> &lt;= i &lt; <span class="c-num">90</span>:
+            a -= <span class="c-num">0.05</span>
+            lt(<span class="c-num">3</span>)
+            fd(a)
+        <span class="c-kw">else</span>:
+            a += <span class="c-num">0.05</span>
+            lt(<span class="c-num">3</span>)
+            fd(a)
+    tracer(<span class="c-kw">True</span>)
+    end_fill()
+
+
+<span class="c-kw">def</span> daari():
+    vishal(-<span class="c-num">32</span>, <span class="c-num">135</span>)
+    seth(<span class="c-num">165</span>)
+    fd(<span class="c-num">60</span>)
+
+    vishal(-<span class="c-num">32</span>, <span class="c-num">125</span>)
+    seth(<span class="c-num">180</span>)
+    fd(<span class="c-num">60</span>)
+
+    vishal(-<span class="c-num">32</span>, <span class="c-num">115</span>)
+    seth(<span class="c-num">193</span>)
+    fd(<span class="c-num">60</span>)
+
+    vishal(<span class="c-num">37</span>, <span class="c-num">135</span>)
+    seth(<span class="c-num">15</span>)
+    fd(<span class="c-num">60</span>)
+
+    vishal(<span class="c-num">37</span>, <span class="c-num">125</span>)
+    seth(<span class="c-num">0</span>)
+    fd(<span class="c-num">60</span>)
+
+    vishal(<span class="c-num">37</span>, <span class="c-num">115</span>)
+    seth(-<span class="c-num">13</span>)
+    fd(<span class="c-num">60</span>)
+
+
+<span class="c-kw">def</span> mukh():
+    vishal(<span class="c-num">5</span>, <span class="c-num">148</span>)
+    seth(<span class="c-num">270</span>)
+    fd(<span class="c-num">100</span>)
+    seth(<span class="c-num">0</span>)
+    circle(<span class="c-num">120</span>, <span class="c-num">50</span>)
+    seth(<span class="c-num">230</span>)
+    circle(-<span class="c-num">120</span>, <span class="c-num">100</span>)
+
+
+<span class="c-kw">def</span> muflar():
+    fillcolor(<span class="c-str">'#e70010'</span>)
+    begin_fill()
+    seth(<span class="c-num">0</span>)
+    fd(<span class="c-num">200</span>)
+    circle(-<span class="c-num">5</span>, <span class="c-num">90</span>)
+    fd(<span class="c-num">10</span>)
+    circle(-<span class="c-num">5</span>, <span class="c-num">90</span>)
+    fd(<span class="c-num">207</span>)
+    circle(-<span class="c-num">5</span>, <span class="c-num">90</span>)
+    fd(<span class="c-num">10</span>)
+    circle(-<span class="c-num">5</span>, <span class="c-num">90</span>)
+    end_fill()
+
+
+<span class="c-kw">def</span> nak():
+    vishal(-<span class="c-num">10</span>, <span class="c-num">158</span>)
+    seth(<span class="c-num">315</span>)
+    fillcolor(<span class="c-str">'#e70010'</span>)
+    begin_fill()
+    circle(<span class="c-num">20</span>)
+    end_fill()
+
+
+<span class="c-kw">def</span> black_aankha():
+    seth(<span class="c-num">0</span>)
+    vishal(-<span class="c-num">20</span>, <span class="c-num">195</span>)
+    fillcolor(<span class="c-str">'#000000'</span>)
+    begin_fill()
+    circle(<span class="c-num">13</span>)
+    end_fill()
+
+    pensize(<span class="c-num">6</span>)
+    vishal(<span class="c-num">20</span>, <span class="c-num">205</span>)
+    seth(<span class="c-num">75</span>)
+    circle(-<span class="c-num">10</span>, <span class="c-num">150</span>)
+    pensize(<span class="c-num">3</span>)
+
+    vishal(-<span class="c-num">17</span>, <span class="c-num">200</span>)
+    seth(<span class="c-num">0</span>)
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    circle(<span class="c-num">5</span>)
+    end_fill()
+    vishal(<span class="c-num">0</span>, <span class="c-num">0</span>)
+
+
+<span class="c-kw">def</span> face():
+    fd(<span class="c-num">183</span>)
+    lt(<span class="c-num">45</span>)
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    circle(<span class="c-num">120</span>, <span class="c-num">100</span>)
+    seth(<span class="c-num">180</span>)
+    <span class="c-com"># print(pos())</span>
+    fd(<span class="c-num">121</span>)
+    pendown()
+    seth(<span class="c-num">215</span>)
+    circle(<span class="c-num">120</span>, <span class="c-num">100</span>)
+    end_fill()
+    vishal(<span class="c-num">63.56</span>, <span class="c-num">218.24</span>)
+    seth(<span class="c-num">90</span>)
+    aankh()
+    seth(<span class="c-num">180</span>)
+    penup()
+    fd(<span class="c-num">60</span>)
+    pendown()
+    seth(<span class="c-num">90</span>)
+    aankh()
+    penup()
+    seth(<span class="c-num">180</span>)
+    fd(<span class="c-num">64</span>)
+
+
+<span class="c-kw">def</span> taauko():
+    penup()
+    circle(<span class="c-num">150</span>, <span class="c-num">40</span>)
+    pendown()
+    fillcolor(<span class="c-str">'#00a0de'</span>)
+    begin_fill()
+    circle(<span class="c-num">150</span>, <span class="c-num">280</span>)
+    end_fill()
+
+
+<span class="c-kw">def</span> Doraemon():
+    taauko()
+
+    muflar()
+
+    face()
+
+    nak()
+
+    mukh()
+
+    daari()
+
+    vishal(<span class="c-num">0</span>, <span class="c-num">0</span>)
+
+    seth(<span class="c-num">0</span>)
+    penup()
+    circle(<span class="c-num">150</span>, <span class="c-num">50</span>)
+    pendown()
+    seth(<span class="c-num">30</span>)
+    fd(<span class="c-num">40</span>)
+    seth(<span class="c-num">70</span>)
+    circle(-<span class="c-num">30</span>, <span class="c-num">270</span>)
+
+    fillcolor(<span class="c-str">'#00a0de'</span>)
+    begin_fill()
+
+    seth(<span class="c-num">230</span>)
+    fd(<span class="c-num">80</span>)
+    seth(<span class="c-num">90</span>)
+    circle(<span class="c-num">1000</span>, <span class="c-num">1</span>)
+    seth(-<span class="c-num">89</span>)
+    circle(-<span class="c-num">1000</span>, <span class="c-num">10</span>)
+
+    <span class="c-com"># print(pos())</span>
+
+    seth(<span class="c-num">180</span>)
+    fd(<span class="c-num">70</span>)
+    seth(<span class="c-num">90</span>)
+    circle(<span class="c-num">30</span>, <span class="c-num">180</span>)
+    seth(<span class="c-num">180</span>)
+    fd(<span class="c-num">70</span>)
+
+    <span class="c-com"># print(pos())</span>
+    seth(<span class="c-num">100</span>)
+    circle(-<span class="c-num">1000</span>, <span class="c-num">9</span>)
+
+    seth(-<span class="c-num">86</span>)
+    circle(<span class="c-num">1000</span>, <span class="c-num">2</span>)
+    seth(<span class="c-num">230</span>)
+    fd(<span class="c-num">40</span>)
+
+    <span class="c-com"># print(pos())</span>
+
+    circle(-<span class="c-num">30</span>, <span class="c-num">230</span>)
+    seth(<span class="c-num">45</span>)
+    fd(<span class="c-num">81</span>)
+    seth(<span class="c-num">0</span>)
+    fd(<span class="c-num">203</span>)
+    circle(<span class="c-num">5</span>, <span class="c-num">90</span>)
+    fd(<span class="c-num">10</span>)
+    circle(<span class="c-num">5</span>, <span class="c-num">90</span>)
+    fd(<span class="c-num">7</span>)
+    seth(<span class="c-num">40</span>)
+    circle(<span class="c-num">150</span>, <span class="c-num">10</span>)
+    seth(<span class="c-num">30</span>)
+    fd(<span class="c-num">40</span>)
+    end_fill()
+
+    seth(<span class="c-num">70</span>)
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    circle(-<span class="c-num">30</span>)
+    end_fill()
+
+    vishal(<span class="c-num">103.74</span>, -<span class="c-num">182.59</span>)
+    seth(<span class="c-num">0</span>)
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    fd(<span class="c-num">15</span>)
+    circle(-<span class="c-num">15</span>, <span class="c-num">180</span>)
+    fd(<span class="c-num">90</span>)
+    circle(-<span class="c-num">15</span>, <span class="c-num">180</span>)
+    fd(<span class="c-num">10</span>)
+    end_fill()
+
+    vishal(-<span class="c-num">96.26</span>, -<span class="c-num">182.59</span>)
+    seth(<span class="c-num">180</span>)
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    fd(<span class="c-num">15</span>)
+    circle(<span class="c-num">15</span>, <span class="c-num">180</span>)
+    fd(<span class="c-num">90</span>)
+    circle(<span class="c-num">15</span>, <span class="c-num">180</span>)
+    fd(<span class="c-num">10</span>)
+    end_fill()
+
+    vishal(-<span class="c-num">133.97</span>, -<span class="c-num">91.81</span>)
+    seth(<span class="c-num">50</span>)
+    fillcolor(<span class="c-str">'#ffffff'</span>)
+    begin_fill()
+    circle(<span class="c-num">30</span>)
+    end_fill()
+    <span class="c-com"># Doraemon with Python Turtle</span>
+
+    vishal(-<span class="c-num">103.42</span>, <span class="c-num">15.09</span>)
+    seth(<span class="c-num">0</span>)
+    fd(<span class="c-num">38</span>)
+    seth(<span class="c-num">230</span>)
+    begin_fill()
+    circle(<span class="c-num">90</span>, <span class="c-num">260</span>)
+    end_fill()
+
+    vishal(<span class="c-num">5</span>, -<span class="c-num">40</span>)
+    seth(<span class="c-num">0</span>)
+    fd(<span class="c-num">70</span>)
+    seth(-<span class="c-num">90</span>)
+    circle(-<span class="c-num">70</span>, <span class="c-num">180</span>)
+    seth(<span class="c-num">0</span>)
+    fd(<span class="c-num">70</span>)
+
+    vishal(-<span class="c-num">103.42</span>, <span class="c-num">15.09</span>)
+    fd(<span class="c-num">90</span>)
+    seth(<span class="c-num">70</span>)
+    fillcolor(<span class="c-str">'#ffd200'</span>)
+    <span class="c-com"># print(pos())</span>
+    begin_fill()
+    circle(-<span class="c-num">20</span>)
+    end_fill()
+    seth(<span class="c-num">170</span>)
+    fillcolor(<span class="c-str">'#ffd200'</span>)
+    begin_fill()
+    circle(-<span class="c-num">2</span>, <span class="c-num">180</span>)
+    seth(<span class="c-num">10</span>)
+    circle(-<span class="c-num">100</span>, <span class="c-num">22</span>)
+    circle(-<span class="c-num">2</span>, <span class="c-num">180</span>)
+    seth(<span class="c-num">180</span> - <span class="c-num">10</span>)
+    circle(<span class="c-num">100</span>, <span class="c-num">22</span>)
+    end_fill()
+    goto(-<span class="c-num">13.42</span>, <span class="c-num">15.09</span>)
+    seth(<span class="c-num">250</span>)
+    circle(<span class="c-num">20</span>, <span class="c-num">110</span>)
+    seth(<span class="c-num">90</span>)
+    fd(<span class="c-num">15</span>)
+    dot(<span class="c-num">10</span>)
+    vishal(<span class="c-num">0</span>, -<span class="c-num">150</span>)
+
+    black_aankha()
+
+
+<span class="c-kw">if</span> __name__ == <span class="c-str">'__main__'</span>:
+    screensize(<span class="c-num">800</span>, <span class="c-num">600</span>, <span class="c-str">"#f0f0f0"</span>)
+    pensize(<span class="c-num">3</span>)
+    speed(<span class="c-num">9</span>)
+    Doraemon()
+    vishal(<span class="c-num">100</span>, -<span class="c-num">300</span>)
+    write(<span class="c-str">'by vishal singh'</span>, font=(<span class="c-str">"Bradley Hand ITC"</span>, <span class="c-num">30</span>, <span class="c-str">"bold"</span>))
+    mainloop()</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
-function draw(){
-  const t = new Turtle('c', {scale: 1});
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
+
+const PAGE_OPTS = {scale: 1};
+function draw(t){
   t.bgcolor('#f0f0f0');
   t.pensize(3);
 
@@ -273,6 +604,25 @@ function draw(){
 
   Doraemon();
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
