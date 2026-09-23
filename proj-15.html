@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>15. Rrathë cyan — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">15</span>Rrathë cyan</h1></header>
+<main><p class="desc">240 rrathë koncentrikë cyan që rrotullohen.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 0.75});
+  t.bgcolor('black');
+  for (let i = 0; i < 240; i++) {
+    t.color('cyan');
+    t.circle(i);
+    t.left(5);
+  }
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); draw(); };
+</script></body></html>
