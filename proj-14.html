@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>14. Ninja — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">14</span>Ninja</h1></header>
+<main><p class="desc">Yll ninja me 180 tehe mbi sfond të kuq.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 0.8});
+  t.bgcolor('red');
+  for (let i = 0; i < 180; i++) {
+    t.forward(100);
+    t.right(30);
+    t.forward(20);
+    t.left(60);
+    t.forward(50);
+    t.right(30);
+    t.penup();
+    t.goto(0, 0);
+    t.pendown();
+    t.right(2);
+  }
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); draw(); };
+</script></body></html>
