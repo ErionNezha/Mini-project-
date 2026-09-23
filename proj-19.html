@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>19. Spiralë gjashtëkëndore — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">19</span>Spiralë gjashtëkëndore</h1></header>
+<main><p class="desc">Spiralë me 6 ngjyra dhe vijë që trashet.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1});
+  t.bgcolor('black');
+  const colors = ['red','purple','blue','green','orange','yellow'];
+  for(let x = 0; x < 360; x++){
+    t.pencolor(colors[x % 6]);
+    t.width(Math.floor(x / 100) + 1);
+    t.forward(x);
+    t.left(59);
+  }
+  t.hideturtle();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
