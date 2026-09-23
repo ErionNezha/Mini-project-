@@ -1,0 +1,27 @@
+:root { --gold: #ffc857; --bg: #0a0a10; --card: #14141c; --txt: #e8e8f0; --muted: #9a9ab0; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg); color: var(--txt); font-family: 'Segoe UI', system-ui, sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+.top { display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-bottom: 1px solid #23232e; }
+.top h1 { font-size: 1.4rem; color: var(--gold); }
+.top h1 .num { background: var(--gold); color: #111; border-radius: 8px; padding: 2px 10px; margin-right: 10px; font-size: 1.1rem; }
+.back { color: var(--gold); text-decoration: none; border: 1px solid var(--gold); border-radius: 8px; padding: 8px 14px; font-size: .9rem; white-space: nowrap; }
+.back:hover { background: var(--gold); color: #111; }
+main { flex: 1; padding: 24px; max-width: 1100px; width: 100%; margin: 0 auto; }
+.desc { color: var(--muted); margin-bottom: 18px; line-height: 1.6; }
+.stage { background: #000; border: 1px solid #2a2a38; border-radius: 14px; padding: 12px; display: flex; justify-content: center; overflow: auto; }
+.stage canvas { border-radius: 8px; max-width: 100%; }
+.controls { margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap; }
+button { background: transparent; color: var(--gold); border: 1px solid var(--gold); border-radius: 8px; padding: 10px 20px; font-size: 1rem; cursor: pointer; }
+button:hover { background: var(--gold); color: #111; }
+footer { text-align: center; padding: 22px; color: var(--muted); border-top: 1px solid #23232e; font-size: .9rem; }
+footer strong { color: var(--gold); }
+/* hub */
+.hub-hero { text-align: center; padding: 40px 20px 10px; }
+.hub-hero h1 { color: var(--gold); font-size: 2.2rem; margin-bottom: 8px; }
+.hub-hero p { color: var(--muted); }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; padding: 24px; max-width: 1200px; margin: 0 auto; width: 100%; }
+.card { background: var(--card); border: 1px solid #2a2a38; border-radius: 14px; padding: 20px; text-decoration: none; color: var(--txt); transition: transform .15s, border-color .15s; display: block; }
+.card:hover { transform: translateY(-4px); border-color: var(--gold); }
+.card .n { display: inline-block; background: var(--gold); color: #111; font-weight: 700; border-radius: 8px; padding: 2px 10px; margin-bottom: 10px; }
+.card h3 { font-size: 1.05rem; margin-bottom: 6px; color: var(--gold); }
+.card p { font-size: .85rem; color: var(--muted); line-height: 1.5; }
