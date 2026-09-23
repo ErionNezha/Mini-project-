@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22. GenJutsu — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">22</span>GenJutsu</h1></header>
+<main><p class="desc">Sharingan i animuar me tre tomoe rrotulluese.</p><div class="stage"><canvas id="c" width="700" height="700"></canvas></div>
+</main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+// SHËNIM: origjinali Python rrotullonte breshkën e gabuar (t.right në vend të klonit),
+// ndaj tomoe-t rrinin statike — këtu secila tomoe merr heading-un e vet dhe rrotullohet vërtetë.
+const t = new Turtle('c', {scale: 1.2});
+function drawBase(){
+  t.penup(); t.goto(0, -140); t.pendown();
+  t.color('black', 'red'); t.width(4);
+  t.begin_fill(); t.circle(200); t.end_fill();
+  t.penup(); t.left(90); t.forward(160); t.right(90); t.pendown();
+  t.color('black');
+  t.begin_fill(); t.circle(40); t.end_fill();
+  t.penup(); t.right(90); t.forward(60); t.left(90); t.pendown();
+  t.width(3); t.color('grey'); t.circle(100);
+}
+function tomoe(heading){
+  const m = new Turtle('c', {scale: 1.2});
+  m.penup(); m.goto(0, 60); m.setheading(heading); m.pendown();
+  m.forward(100); m.right(5);
+  m.color('black', 'black');
+  m.begin_fill(); m.circle(10, 180); m.right(180); m.circle(-20, 180); m.circle(-10, 180); m.end_fill();
+}
+let ang = 0;
+function frame(){
+  t.clear();
+  t.bgcolor('black');
+  drawBase();
+  for(let k = 0; k < 3; k++) tomoe(ang + k * 120);
+  ang += 1.5;
+  requestAnimationFrame(frame);
+}
+frame();
+</script></body></html>
