@@ -1,12 +1,69 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>10. Spiralë gradient — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">10</span>Spiralë gradient</h1></header>
-<main><p class="desc">Spiralë me gradient të plotë: e kuqe → portokalli → e verdhë → jeshile → blu.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>10. Spiralë gradient — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">10</span>Spiralë gradient</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Spiralë me gradient të plotë: e kuqe → portokalli → e verdhë → jeshile → blu.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 10.py</span></div>
+<pre><code id="pycode"><span class="c-kw">import</span> turtle
+turtle.setup(width=<span class="c-num">600</span>, height=<span class="c-num">500</span>)
+turtle.reset()
+turtle.hideturtle()
+turtle.speed(<span class="c-num">0</span>)
+
+turtle.bgcolor(<span class="c-str">'black'</span>)
+
+c = <span class="c-num">0</span>
+x = <span class="c-num">0</span>
+
+colors = [
+<span class="c-com">#reddish colors</span>
+(<span class="c-num">1.00</span>, <span class="c-num">0.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.03</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.05</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.07</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.10</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.12</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.15</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.17</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.20</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.23</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.25</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.28</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.30</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.33</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.35</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.38</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.40</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.42</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.45</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.47</span>, <span class="c-num">0.00</span>),
+<span class="c-com">#orangey colors</span>
+(<span class="c-num">1.00</span>, <span class="c-num">0.50</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.53</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.55</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.57</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.60</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.62</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.65</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.68</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.70</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.72</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.75</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.78</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.80</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.82</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.85</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.88</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.90</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.93</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.95</span>, <span class="c-num">0.00</span>),(<span class="c-num">1.00</span>, <span class="c-num">0.97</span>, <span class="c-num">0.00</span>),
+<span class="c-com">#yellowy colors</span>
+(<span class="c-num">1.00</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.95</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.90</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.85</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.80</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.75</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.70</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.65</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.60</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.55</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.50</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.45</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.40</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.35</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.30</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.25</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.20</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.15</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.10</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.05</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),
+<span class="c-com">#greenish colors</span>
+(<span class="c-num">0.00</span>, <span class="c-num">1.00</span>, <span class="c-num">0.00</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.95</span>, <span class="c-num">0.05</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.90</span>, <span class="c-num">0.10</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.85</span>, <span class="c-num">0.15</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.80</span>, <span class="c-num">0.20</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.75</span>, <span class="c-num">0.25</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.70</span>, <span class="c-num">0.30</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.65</span>, <span class="c-num">0.35</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.60</span>, <span class="c-num">0.40</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.55</span>, <span class="c-num">0.45</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.50</span>, <span class="c-num">0.50</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.45</span>, <span class="c-num">0.55</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.40</span>, <span class="c-num">0.60</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.35</span>, <span class="c-num">0.65</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.30</span>, <span class="c-num">0.70</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.25</span>, <span class="c-num">0.75</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.20</span>, <span class="c-num">0.80</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.15</span>, <span class="c-num">0.85</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.10</span>, <span class="c-num">0.90</span>),(<span class="c-num">0.00</span>, <span class="c-num">0.05</span>, <span class="c-num">0.95</span>),
+<span class="c-com">#blueish colors</span>
+(<span class="c-num">0.00</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.05</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.10</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.15</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.20</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.25</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.30</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.35</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.40</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.45</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.50</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.55</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.60</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.65</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.70</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.75</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.80</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.85</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.90</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>),(<span class="c-num">0.95</span>, <span class="c-num">0.00</span>, <span class="c-num">1.00</span>)
+]
+
+<span class="c-kw">while</span> x &lt; <span class="c-num">1000</span>:
+    idx = int(c)
+    color = colors[idx]
+    turtle.color(color)
+    turtle.forward(x)
+    turtle.right(<span class="c-num">98</span>)
+    x = x + <span class="c-num">1</span>
+    c = c + <span class="c-num">0.1</span>
+
+turtle.exitoncli</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
 const colors = [
 // ngjyra të kuqërremta
 [1.00,0.00,0.00],[1.00,0.03,0.00],[1.00,0.05,0.00],[1.00,0.07,0.00],[1.00,0.10,0.00],[1.00,0.12,0.00],[1.00,0.15,0.00],[1.00,0.17,0.00],[1.00,0.20,0.00],[1.00,0.23,0.00],[1.00,0.25,0.00],[1.00,0.28,0.00],[1.00,0.30,0.00],[1.00,0.33,0.00],[1.00,0.35,0.00],[1.00,0.38,0.00],[1.00,0.40,0.00],[1.00,0.42,0.00],[1.00,0.45,0.00],[1.00,0.47,0.00],
@@ -19,8 +76,8 @@ const colors = [
 // ngjyra blu
 [0.00,0.00,1.00],[0.05,0.00,1.00],[0.10,0.00,1.00],[0.15,0.00,1.00],[0.20,0.00,1.00],[0.25,0.00,1.00],[0.30,0.00,1.00],[0.35,0.00,1.00],[0.40,0.00,1.00],[0.45,0.00,1.00],[0.50,0.00,1.00],[0.55,0.00,1.00],[0.60,0.00,1.00],[0.65,0.00,1.00],[0.70,0.00,1.00],[0.75,0.00,1.00],[0.80,0.00,1.00],[0.85,0.00,1.00],[0.90,0.00,1.00],[0.95,0.00,1.00]
 ];
-function draw(){
-  const t = new Turtle('c', {scale: 0.5});
+const PAGE_OPTS = {scale: 0.5};
+function draw(t){
   t.bgcolor('black');
   let c = 0, x = 0;
   while(x < 1000){
@@ -31,6 +88,25 @@ function draw(){
     c += 0.1;
   }
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
