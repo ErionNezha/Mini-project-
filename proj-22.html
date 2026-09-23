@@ -1,15 +1,130 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>22. GenJutsu — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">22</span>GenJutsu</h1></header>
-<main><p class="desc">Sharingan i animuar me tre tomoe rrotulluese.</p><div class="stage"><canvas id="c" width="700" height="700"></canvas></div>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>22. GenJutsu — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">22</span>GenJutsu</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e rrotullimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status live" id="drawStatus">Animim live…</span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Sharingan i animuar me tre tomoe rrotulluese.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="700" height="700"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 22.py</span></div>
+<pre><code id="pycode">
+<span class="c-kw">import</span> turtle <span class="c-kw">as</span> t
+
+<span class="c-kw">import</span> time 
+t.tracer(<span class="c-num">0</span>, <span class="c-num">0</span>)
+screen = t.Screen()
+t.title(<span class="c-str">"GenJutsu"</span>)
+<span class="c-com">#  developer.varun(instagram)</span>
+<span class="c-kw">def</span> cir():
+    t.home()
+    t.goto(<span class="c-num">0</span>,-<span class="c-num">140</span>)
+    t.shape(<span class="c-str">'blank'</span>)
+    t.color(<span class="c-str">'black'</span>,<span class="c-str">'red'</span>)
+    t.width(<span class="c-num">4</span>)
+    t.begin_fill()
+    t.circle(<span class="c-num">200</span>)
+    t.end_fill()
+    t.penup()
+    t.left(<span class="c-num">90</span>)
+    t.forward(<span class="c-num">160</span>)
+    t.right(<span class="c-num">90</span>)
+    t.pendown()
+    t.color(<span class="c-str">'black'</span>)
+    t.begin_fill()
+    t.circle(<span class="c-num">40</span>)
+    t.end_fill()
+    t.penup()
+    t.right(<span class="c-num">90</span>)
+    t.forward(<span class="c-num">60</span>)
+    t.left(<span class="c-num">90</span>)
+    t.pendown()
+    t.width(<span class="c-num">3</span>)
+    t.color(<span class="c-str">'grey'</span>)
+    t.circle(<span class="c-num">100</span>)
+
+<span class="c-kw">class</span> yin():
+    <span class="c-kw">def</span> __init__(self, turtle):
+        self.turtle = turtle.clone()
+        
+    <span class="c-kw">def</span> draw(self, angle, distance):
+        t.right(angle)
+        
+        self.turtle.penup()
+        self.turtle.forward(<span class="c-num">100</span>)
+        self.turtle.right(<span class="c-num">5</span>)
+        self.turtle.pendown()
+        self.turtle.color(<span class="c-str">'black'</span>,<span class="c-str">'black'</span>)
+        
+        self.turtle.begin_fill()
+        self.turtle.circle(distance,<span class="c-num">180</span>)
+        self.turtle.right(<span class="c-num">180</span>)
+        self.turtle.circle(-<span class="c-num">2</span>*distance,<span class="c-num">180</span>)
+        self.turtle.circle(-<span class="c-num">1</span>*distance,<span class="c-num">180</span>)
+        self.turtle.end_fill()
+
+    <span class="c-kw">def</span> erase(self):
+        self.turtle.clear()
+
+    <span class="c-kw">def</span> go(self):
+        self.turtle.goto(<span class="c-num">0</span>,<span class="c-num">60</span>)
+
+t.penup()
+t.goto(<span class="c-num">0</span>, <span class="c-num">60</span>)
+t.pendown()
+t.shape(<span class="c-str">"blank"</span>)
+
+a = yin(t)
+t.right(<span class="c-num">120</span>)
+b = yin(t)
+t.right(<span class="c-num">120</span>)
+c = yin(t)
+
+i = <span class="c-num">0</span>
+<span class="c-kw">for</span> j <span class="c-kw">in</span> [a,b,c]:
+    j.erase()
+
+<span class="c-kw">try</span>:    
+    <span class="c-kw">while</span> <span class="c-kw">True</span>:
+        cir()
+        <span class="c-kw">for</span> j <span class="c-kw">in</span> [a,b,c]:
+            j.draw(i, <span class="c-num">10</span>)
+        screen.update()
+        <span class="c-kw">for</span> j <span class="c-kw">in</span> [a,b,c]:
+            j.go()
+            j.erase()
+        time.sleep(<span class="c-num">0.01</span>)
+        i+=<span class="c-num">0.01</span>
+<span class="c-kw">except</span>:
+    <span class="c-kw">print</span>(<span class="c-str">"Thanks for using"</span>)
+
+</code></pre>
+</aside>
+</div>
 </main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
 // SHËNIM: origjinali Python rrotullonte breshkën e gabuar (t.right në vend të klonit),
 // ndaj tomoe-t rrinin statike — këtu secila tomoe merr heading-un e vet dhe rrotullohet vërtetë.
 const t = new Turtle('c', {scale: 1.2});
+const tomoes = [new Turtle('c', {scale: 1.2}), new Turtle('c', {scale: 1.2}), new Turtle('c', {scale: 1.2})];
 function drawBase(){
   t.penup(); t.goto(0, -140); t.pendown();
   t.color('black', 'red'); t.width(4);
@@ -20,21 +135,30 @@ function drawBase(){
   t.penup(); t.right(90); t.forward(60); t.left(90); t.pendown();
   t.width(3); t.color('grey'); t.circle(100);
 }
-function tomoe(heading){
-  const m = new Turtle('c', {scale: 1.2});
+function drawTomoe(m, heading){
+  m.reset();
   m.penup(); m.goto(0, 60); m.setheading(heading); m.pendown();
   m.forward(100); m.right(5);
   m.color('black', 'black');
   m.begin_fill(); m.circle(10, 180); m.right(180); m.circle(-20, 180); m.circle(-10, 180); m.end_fill();
 }
-let ang = 0;
+var ang = 0, rotSpeed = 1.5, rafId = null;
 function frame(){
+  rafId = null;
   t.clear();
   t.bgcolor('black');
   drawBase();
-  for(let k = 0; k < 3; k++) tomoe(ang + k * 120);
-  ang += 1.5;
-  requestAnimationFrame(frame);
+  for(let k = 0; k < 3; k++) drawTomoe(tomoes[k], ang + k * 120);
+  ang += rotSpeed;
+  rafId = requestAnimationFrame(frame);
 }
-frame();
-</script></body></html>
+function redraw(){
+  ang = 0;
+  document.getElementById('drawStatus').textContent = 'Animim live…';
+  if(!rafId) frame();
+}
+document.getElementById('speed').addEventListener('input', e => { rotSpeed = 0.2 + (+e.target.value) / 40; });
+redraw();
+</script>
+</body>
+</html>
