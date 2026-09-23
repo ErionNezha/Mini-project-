@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>16. Spiralë 7-ngjyrëshe — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">16</span>Spiralë 7-ngjyrëshe</h1></header>
+<main><p class="desc">Spiralë katrore me 7 ngjyra që ndërrohen.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 0.55});
+  t.bgcolor('black');
+  const col = ['white', 'orange', 'red', 'yellow', 'green', 'blue', 'cyan'];
+  let i;
+  for (i = 0; i < 200; i++) {
+    t.forward(i * 4);
+    t.right(91);
+    t.color(col[i % 7]);
+  }
+  for (let b = 0; b < 3; b++) {
+    t.forward(i * 4);
+    t.right(91);
+  }
+  for (let c2 = 0; c2 < 2; c2++) {
+    t.forward(i * 4);
+    t.right(91);
+  }
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); draw(); };
+</script></body></html>
