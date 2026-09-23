@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20. Syri i keq — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">20</span>Syri i keq</h1></header>
+<main><p class="desc">Syri mbrojtës me rrathë të kuq e të zinj.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1, ox: 21, oy: 85});
+  t.bgcolor('#dceaf6');
+  function draw_circle(color, radius, x, y){
+    t.penup();
+    t.fillcolor(color);
+    t.goto(x, y);
+    t.pendown();
+    t.begin_fill();
+    t.circle(radius);
+    t.end_fill();
+  }
+  // SHËNIM: origjinali Python kishte gabim shtypi "'Balck" — u rregullua në 'black'
+  draw_circle('black', 210, -22, -150);
+  draw_circle('red',   196, -20, -135);
+  draw_circle('black',  50, -20,  -15);
+  draw_circle('black',  35, -120, -67);
+  draw_circle('red',    35, -130, -65);
+  draw_circle('black',  34, -120, -60);
+  draw_circle('black',  35,   98, -10);
+  draw_circle('red',    35,   85,   0);
+  draw_circle('black',  34,  100, -10);
+  draw_circle('black',  35,  -40, 155);
+  draw_circle('red',    35,  -55, 150);
+  draw_circle('black',  34,  -37, 148);
+  t.hideturtle();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
