@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>8. Doraemon — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">8</span>Doraemon</h1></header>
+<main><p class="desc">Doraemon — macja robot vizatimor, i vizatuar me breshkë.</p><div class="stage"><canvas id="c" width="900" height="800"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1});
+  t.bgcolor('#f0f0f0');
+  t.pensize(3);
+
+  // Doraemon — port mekanik i p8.py
+  function vishal(x, y){
+    t.penup();
+    t.goto(x, y);
+    t.pendown();
+  }
+
+  function aankh(){
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.tracer(false);
+    let a = 2.5;
+    for(let i=0; i<120; i++){
+      if((0 <= i && i < 30) || (60 <= i && i < 90)){
+        a -= 0.05;
+        t.left(3);
+        t.forward(a);
+      } else {
+        a += 0.05;
+        t.left(3);
+        t.forward(a);
+      }
+    }
+    t.tracer(true);
+    t.end_fill();
+  }
+
+  function daari(){
+    vishal(-32, 135); t.setheading(165); t.forward(60);
+    vishal(-32, 125); t.setheading(180); t.forward(60);
+    vishal(-32, 115); t.setheading(193); t.forward(60);
+    vishal(37, 135); t.setheading(15); t.forward(60);
+    vishal(37, 125); t.setheading(0); t.forward(60);
+    vishal(37, 115); t.setheading(-13); t.forward(60);
+  }
+
+  function mukh(){
+    vishal(5, 148);
+    t.setheading(270);
+    t.forward(100);
+    t.setheading(0);
+    t.circle(120, 50);
+    t.setheading(230);
+    t.circle(-120, 100);
+  }
+
+  function muflar(){
+    t.fillcolor('#e70010');
+    t.begin_fill();
+    t.setheading(0);
+    t.forward(200);
+    t.circle(-5, 90);
+    t.forward(10);
+    t.circle(-5, 90);
+    t.forward(207);
+    t.circle(-5, 90);
+    t.forward(10);
+    t.circle(-5, 90);
+    t.end_fill();
+  }
+
+  function nak(){
+    vishal(-10, 158);
+    t.setheading(315);
+    t.fillcolor('#e70010');
+    t.begin_fill();
+    t.circle(20);
+    t.end_fill();
+  }
+
+  function black_aankha(){
+    t.setheading(0);
+    vishal(-20, 195);
+    t.fillcolor('#000000');
+    t.begin_fill();
+    t.circle(13);
+    t.end_fill();
+    t.pensize(6);
+    vishal(20, 205);
+    t.setheading(75);
+    t.circle(-10, 150);
+    t.pensize(3);
+    vishal(-17, 200);
+    t.setheading(0);
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.circle(5);
+    t.end_fill();
+    vishal(0, 0);
+  }
+
+  function face(){
+    t.forward(183);
+    t.left(45);
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.circle(120, 100);
+    t.setheading(180);
+    t.forward(121);
+    t.pendown();
+    t.setheading(215);
+    t.circle(120, 100);
+    t.end_fill();
+    vishal(63.56, 218.24);
+    t.setheading(90);
+    aankh();
+    t.setheading(180);
+    t.penup();
+    t.forward(60);
+    t.pendown();
+    t.setheading(90);
+    aankh();
+    t.penup();
+    t.setheading(180);
+    t.forward(64);
+  }
+
+  function taauko(){
+    t.penup();
+    t.circle(150, 40);
+    t.pendown();
+    t.fillcolor('#00a0de');
+    t.begin_fill();
+    t.circle(150, 280);
+    t.end_fill();
+  }
+
+  function Doraemon(){
+    taauko();
+    muflar();
+    face();
+    nak();
+    mukh();
+    daari();
+
+    vishal(0, 0);
+    t.setheading(0);
+    t.penup();
+    t.circle(150, 50);
+    t.pendown();
+    t.setheading(30);
+    t.forward(40);
+    t.setheading(70);
+    t.circle(-30, 270);
+
+    t.fillcolor('#00a0de');
+    t.begin_fill();
+    t.setheading(230);
+    t.forward(80);
+    t.setheading(90);
+    t.circle(1000, 1);
+    t.setheading(-89);
+    t.circle(-1000, 10);
+    t.setheading(180);
+    t.forward(70);
+    t.setheading(90);
+    t.circle(30, 180);
+    t.setheading(180);
+    t.forward(70);
+    t.setheading(100);
+    t.circle(-1000, 9);
+    t.setheading(-86);
+    t.circle(1000, 2);
+    t.setheading(230);
+    t.forward(40);
+    t.circle(-30, 230);
+    t.setheading(45);
+    t.forward(81);
+    t.setheading(0);
+    t.forward(203);
+    t.circle(5, 90);
+    t.forward(10);
+    t.circle(5, 90);
+    t.forward(7);
+    t.setheading(40);
+    t.circle(150, 10);
+    t.setheading(30);
+    t.forward(40);
+    t.end_fill();
+
+    t.setheading(70);
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.circle(-30);
+    t.end_fill();
+
+    vishal(103.74, -182.59);
+    t.setheading(0);
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.forward(15);
+    t.circle(-15, 180);
+    t.forward(90);
+    t.circle(-15, 180);
+    t.forward(10);
+    t.end_fill();
+
+    vishal(-96.26, -182.59);
+    t.setheading(180);
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.forward(15);
+    t.circle(15, 180);
+    t.forward(90);
+    t.circle(15, 180);
+    t.forward(10);
+    t.end_fill();
+
+    vishal(-133.97, -91.81);
+    t.setheading(50);
+    t.fillcolor('#ffffff');
+    t.begin_fill();
+    t.circle(30);
+    t.end_fill();
+
+    vishal(-103.42, 15.09);
+    t.setheading(0);
+    t.forward(38);
+    t.setheading(230);
+    t.begin_fill();
+    t.circle(90, 260);
+    t.end_fill();
+
+    vishal(5, -40);
+    t.setheading(0);
+    t.forward(70);
+    t.setheading(-90);
+    t.circle(-70, 180);
+    t.setheading(0);
+    t.forward(70);
+
+    vishal(-103.42, 15.09);
+    t.forward(90);
+    t.setheading(70);
+    t.fillcolor('#ffd200');
+    t.begin_fill();
+    t.circle(-20);
+    t.end_fill();
+    t.setheading(170);
+    t.fillcolor('#ffd200');
+    t.begin_fill();
+    t.circle(-2, 180);
+    t.setheading(10);
+    t.circle(-100, 22);
+    t.circle(-2, 180);
+    t.setheading(180 - 10);
+    t.circle(100, 22);
+    t.end_fill();
+    t.goto(-13.42, 15.09);
+    t.setheading(250);
+    t.circle(20, 110);
+    t.setheading(90);
+    t.forward(15);
+    t.dot(10);
+    vishal(0, -150);
+
+    black_aankha();
+  }
+
+  Doraemon();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
