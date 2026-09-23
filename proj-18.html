@@ -1,14 +1,54 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>18. Yll ylberi II — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">18</span>Yll ylberi II</h1></header>
-<main><p class="desc">Variant i projektit 17 — i njëjti algoritëm yjesh me ylber.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>18. Yll ylberi II — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">18</span>Yll ylberi II</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Variant i projektit 17 — i njëjti algoritëm yjesh me ylber.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 18.py</span></div>
+<pre><code id="pycode"><span class="c-kw">import</span> turtle
+<span class="c-kw">import</span> colorsys
+v=turtle.Turtle()
+s=turtle.Screen()
+s.bgcolor(<span class="c-str">'black'</span>)
+v.speed(<span class="c-num">0</span>)
+n=<span class="c-num">36</span>
+h=<span class="c-num">0</span>
+<span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span> (<span class="c-num">460</span>):
+	c=colorsys.hsv_to_rgb(h,<span class="c-num">1</span>,<span class="c-num">0.9</span>)
+	h+=<span class="c-num">1</span>/n
+	v.color(c)
+	v.left(<span class="c-num">145</span>)
+	<span class="c-kw">for</span> j <span class="c-kw">in</span> <span class="c-kw">range</span> (<span class="c-num">5</span>):
+		v.forward(<span class="c-num">300</span>)
+		v.left(<span class="c-num">150</span>)</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
-function draw(){
-  const t = new Turtle('c', {scale: 1});
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
+
+const PAGE_OPTS = {scale: 1};
+function draw(t){
   t.bgcolor('black');
   let n = 36, h = 0;
   for (let i = 0; i < 460; i++) {
@@ -21,6 +61,25 @@ function draw(){
     }
   }
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0, 0, cv.width, cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
