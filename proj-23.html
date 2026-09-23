@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>23. Panda — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">23</span>Panda</h1></header>
+<main><p class="desc">Fytyrë e thjeshtë panda mbi sfond të verdhë.</p><div class="stage"><canvas id="c" width="600" height="600"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 2});
+  t.bgcolor('yellow');
+  function circles(color, radius){
+    t.fillcolor(color);
+    t.begin_fill();
+    t.circle(radius);
+    t.end_fill();
+  }
+  // veshët
+  t.penup(); t.goto(-35, 95); t.pendown(); circles('black', 15);
+  t.penup(); t.goto(35, 95); t.pendown(); circles('black', 15);
+  // fytyra
+  t.penup(); t.goto(0, 35); t.pendown(); circles('white', 40);
+  // sytë e zinj
+  t.penup(); t.goto(-18, 75); t.pendown(); circles('black', 8);
+  t.penup(); t.goto(18, 75); t.pendown(); circles('black', 8);
+  // shkëlqimi i syve
+  t.penup(); t.goto(-18, 77); t.pendown(); circles('white', 4);
+  t.penup(); t.goto(18, 77); t.pendown(); circles('white', 4);
+  // hunda
+  t.penup(); t.goto(0, 55); t.pendown(); circles('black', 5);
+  // goja
+  t.goto(0, 55); t.pendown(); t.right(90); t.circle(5, 180);
+  t.penup(); t.goto(0, 55); t.pendown(); t.left(360); t.circle(5, -180);
+  t.hideturtle();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
