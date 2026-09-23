@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>24. Macja — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">24</span>Macja</h1></header>
+<main><p class="desc">Fytyrë macjeje me veshë, mustaqe dhe gjuhë.</p><div class="stage"><canvas id="c" width="900" height="800"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function draw(){
+  const t = new Turtle('c', {scale: 1.2, oy: -30});
+  t.bgcolor('gray');
+  t.pensize(10);
+  function movePen(x, y){ t.penup(); t.goto(x, y); t.pendown(); }
+  function positionAlongCircle(x, y, radius, angle){
+    const r = angle * Math.PI / 180;
+    return [x + radius * Math.sin(r), y + radius * Math.cos(r)];
+  }
+  // koka
+  t.penup(); t.sety(-150); t.pendown(); t.circle(150);
+  // hunda
+  t.penup(); t.sety(-35); t.pendown(); t.circle(20);
+  // goja
+  movePen(-100, -35);
+  t.right(90); t.circle(50, 180); t.left(180); t.circle(50, 180);
+  // sytë
+  movePen(30, 40); t.right(180); t.circle(30, -180);
+  movePen(-30, 40); t.circle(30, 180);
+  // gjuha
+  movePen(-20, -75); t.circle(20, 180);
+  // veshët
+  let p = positionAlongCircle(0, 0, 150, 25);
+  movePen(p[0], p[1]);
+  p = positionAlongCircle(0, 0, 235, 47); t.goto(p[0], p[1]);
+  p = positionAlongCircle(0, 0, 150, 69); t.goto(p[0], p[1]);
+  p = positionAlongCircle(0, 0, 150, -25);
+  movePen(p[0], p[1]);
+  p = positionAlongCircle(0, 0, 235, -47); t.goto(p[0], p[1]);
+  p = positionAlongCircle(0, 0, 150, -69); t.goto(p[0], p[1]);
+  // mustaqet
+  movePen(50, -15); t.setheading(0); t.forward(180);
+  movePen(50, 0); t.left(5); t.forward(180);
+  movePen(-50, -15); t.setheading(180); t.forward(180);
+  movePen(-50, 0); t.left(-5); t.forward(180);
+  t.hideturtle();
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
