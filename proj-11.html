@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11. Mandala rrathësh — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
+<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">11</span>Mandala rrathësh</h1></header>
+<main><p class="desc">Mandala me rrathë koncentrikë në 5 ngjyra.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
+<script src="turtle.js"></script><script>
+function circles(t, size, count, step){
+  for(let i=0; i<count; i++){
+    t.circle(size);
+    size -= step;
+  }
+}
+function vishal(t, size, repeat, count, step){
+  for(let i=0; i<repeat; i++){
+    circles(t, size, count, step);
+    t.right(360/repeat);
+  }
+}
+function draw(){
+  const t = new Turtle('c', {scale: 0.85});
+  t.bgcolor('black');
+  t.color('white');
+  vishal(t, 200, 10, 10, 4);
+  t.color('yellow');
+  vishal(t, 160, 10, 4, 10);
+  t.color('blue');
+  vishal(t, 120, 10, 4, 5);
+  t.color('red');
+  vishal(t, 80, 10, 4, 19);
+  t.color('cyan');
+  vishal(t, 40, 10, 4, 20);
+}
+draw();
+document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
+</script></body></html>
