@@ -1,14 +1,165 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>24. Macja — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">24</span>Macja</h1></header>
-<main><p class="desc">Fytyrë macjeje me veshë, mustaqe dhe gjuhë.</p><div class="stage"><canvas id="c" width="900" height="800"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>24. Macja — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">24</span>Macja</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Fytyrë macjeje me veshë, mustaqe dhe gjuhë.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="900" height="800"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 24.py</span></div>
+<pre><code id="pycode"><span class="c-kw">import</span> turtle
+<span class="c-kw">import</span> math
+<span class="c-com"># developer.varun (instagram)</span>
+window = turtle.Screen()
+window.bgcolor(<span class="c-str">"gray"</span>)
+
+cursor = turtle.Turtle() <span class="c-com"># Cursor</span>
+cursor.shape(<span class="c-str">"turtle"</span>)
+cursor.color(<span class="c-str">"black"</span>)
+cursor.speed(<span class="c-num">3</span>)
+cursor.pensize(<span class="c-num">10</span>)
+
+
+<span class="c-kw">def</span> movePen(cursor, x, y):
+  cursor.penup()
+  cursor.setposition(x, y)
+  cursor.pendown()
+
+<span class="c-kw">def</span> movePenX(cursor, x):
+  cursor.penup()
+  cursor.setx(x)
+  cursor.pendown()
+
+<span class="c-kw">def</span> movePenY(cursor, y):
+  cursor.penup()
+  cursor.sety(y)
+  cursor.pendown()
+
+<span class="c-kw">def</span> positionAlongCircle(x, y, radius, angle):
+  radians = math.radians(angle)
+  <span class="c-kw">return</span> [x + (radius*math.sin(radians)),
+            y + (radius*math.cos(radians))]
+
+<span class="c-com"># Draw the head</span>
+
+movePenY(cursor, -<span class="c-num">150</span>)
+cursor.circle(<span class="c-num">150</span>)
+
+<span class="c-com"># Draw the nose</span>
+
+noseMouthOffset = -<span class="c-num">15</span>
+
+movePenY(cursor, -<span class="c-num">20</span> + noseMouthOffset)
+cursor.circle(<span class="c-num">20</span>)
+
+<span class="c-com"># Draw the mouth</span>
+
+movePen(cursor, -<span class="c-num">100</span>, -<span class="c-num">20</span> + noseMouthOffset)
+cursor.right(<span class="c-num">90</span>)
+cursor.circle(<span class="c-num">50</span>, <span class="c-num">180</span>)
+cursor.left(<span class="c-num">180</span>)
+cursor.circle(<span class="c-num">50</span>, <span class="c-num">180</span>)
+
+<span class="c-com"># Draw the eyes</span>
+
+eyeSpacingX = <span class="c-num">30</span>
+eyePosY = <span class="c-num">40</span>
+eyeRadius = <span class="c-num">30</span>
+
+<span class="c-com"># Right eye</span>
+
+movePen(cursor, eyeSpacingX, eyePosY)
+cursor.right(<span class="c-num">180</span>)
+cursor.circle(eyeRadius, -<span class="c-num">180</span>)
+
+<span class="c-com"># Left eye</span>
+
+movePen(cursor, -eyeSpacingX, eyePosY)
+cursor.circle(eyeRadius, <span class="c-num">180</span>)
+
+<span class="c-com"># Draw the tongue</span>
+
+movePen(cursor, -<span class="c-num">20</span>, -<span class="c-num">60</span> + noseMouthOffset)
+cursor.circle(<span class="c-num">20</span>, <span class="c-num">180</span>)
+
+<span class="c-com"># Draw the ears</span>
+
+<span class="c-com"># Right ear</span>
+
+earBeginAngle = <span class="c-num">25</span>
+earSize = <span class="c-num">85</span>
+earWidth = <span class="c-num">22</span>
+positionA = positionAlongCircle(<span class="c-num">0</span>, <span class="c-num">0</span>, <span class="c-num">150</span>, earBeginAngle)
+movePen(cursor, positionA[<span class="c-num">0</span>], positionA[<span class="c-num">1</span>])
+
+positionB = positionAlongCircle(<span class="c-num">0</span>, <span class="c-num">0</span>, <span class="c-num">150</span> + earSize, earBeginAngle + earWidth)
+cursor.setposition(positionB[<span class="c-num">0</span>], positionB[<span class="c-num">1</span>])
+
+positionC = positionAlongCircle(<span class="c-num">0</span>, <span class="c-num">0</span>, <span class="c-num">150</span>, earBeginAngle + earWidth * <span class="c-num">2</span>)
+cursor.setposition(positionC[<span class="c-num">0</span>], positionC[<span class="c-num">1</span>])
+
+<span class="c-com"># Left ear</span>
+
+positionA = positionAlongCircle(<span class="c-num">0</span>, <span class="c-num">0</span>, <span class="c-num">150</span>, -earBeginAngle)
+movePen(cursor, positionA[<span class="c-num">0</span>], positionA[<span class="c-num">1</span>])
+
+positionB = positionAlongCircle(<span class="c-num">0</span>, <span class="c-num">0</span>, <span class="c-num">150</span> + earSize, -earBeginAngle + -earWidth)
+cursor.setposition(positionB[<span class="c-num">0</span>], positionB[<span class="c-num">1</span>])
+
+positionC = positionAlongCircle(<span class="c-num">0</span>, <span class="c-num">0</span>, <span class="c-num">150</span>, -earBeginAngle + -earWidth * <span class="c-num">2</span>)
+cursor.setposition(positionC[<span class="c-num">0</span>], positionC[<span class="c-num">1</span>])
+
+<span class="c-com"># Whiskers</span>
+
+whiskerLength = <span class="c-num">180</span>
+
+<span class="c-com"># Right whiskers</span>
+
+movePen(cursor, <span class="c-num">50</span>, -<span class="c-num">15</span>)
+cursor.setheading(<span class="c-num">0</span>)
+cursor.forward(whiskerLength)
+
+movePen(cursor, <span class="c-num">50</span>, <span class="c-num">0</span>)
+cursor.left(<span class="c-num">5</span>)
+cursor.forward(whiskerLength)
+
+<span class="c-com"># Left whiskers</span>
+
+movePen(cursor, -<span class="c-num">50</span>, -<span class="c-num">15</span>)
+cursor.setheading(<span class="c-num">180</span>)
+cursor.forward(whiskerLength)
+
+movePen(cursor, -<span class="c-num">50</span>, <span class="c-num">0</span>)
+cursor.left(-<span class="c-num">5</span>)
+cursor.forward(whiskerLength)
+
+</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
-function draw(){
-  const t = new Turtle('c', {scale: 1.2, oy: -30});
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
+
+const PAGE_OPTS = {scale: 1.2, oy: -30};
+function draw(t){
   t.bgcolor('gray');
   t.pensize(10);
   function movePen(x, y){ t.penup(); t.goto(x, y); t.pendown(); }
@@ -44,6 +195,25 @@ function draw(){
   movePen(-50, 0); t.left(-5); t.forward(180);
   t.hideturtle();
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
