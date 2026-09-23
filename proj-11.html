@@ -1,12 +1,139 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>11. Mandala rrathësh — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">11</span>Mandala rrathësh</h1></header>
-<main><p class="desc">Mandala me rrathë koncentrikë në 5 ngjyra.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>11. Mandala rrathësh — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">11</span>Mandala rrathësh</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Mandala me rrathë koncentrikë në 5 ngjyra.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 11.py</span></div>
+<pre><code id="pycode"><span class="c-kw">import</span> turtle
+
+wn = turtle.Screen()
+wn.bgcolor(<span class="c-str">'black'</span>)
+s = turtle.Turtle()
+s.speed(<span class="c-str">'fastest'</span>)
+s.color(<span class="c-str">'white'</span>)
+rotate = int(<span class="c-num">180</span>)
+
+
+<span class="c-kw">def</span> Circles(t, size):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">10</span>):
+        t.circle(size)
+        size = size - <span class="c-num">4</span>
+
+
+<span class="c-kw">def</span> vishal(t, size, repeat):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(repeat):
+        Circles(t, size)
+        t.right(<span class="c-num">360</span> / repeat)
+
+
+vishal(s, <span class="c-num">200</span>, <span class="c-num">10</span>)
+
+t1 = turtle.Turtle()
+t1.speed(<span class="c-num">0</span>)
+t1.color(<span class="c-str">'yellow'</span>)
+rotate = int(<span class="c-num">90</span>)
+
+
+<span class="c-kw">def</span> Circles(t, size):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">4</span>):
+        t.circle(size)
+        size = size - <span class="c-num">10</span>
+
+
+<span class="c-kw">def</span> vishal(t, size, repeat):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(repeat):
+        Circles(t, size)
+        t.right(<span class="c-num">360</span> / repeat)
+
+
+vishal(t1, <span class="c-num">160</span>, <span class="c-num">10</span>)
+
+t2 = turtle.Turtle()
+t2.speed(<span class="c-num">0</span>)
+t2.color(<span class="c-str">'blue'</span>)
+rotate = int(<span class="c-num">80</span>)
+
+
+<span class="c-kw">def</span> Circles(t, size):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">4</span>):
+        t.circle(size)
+        size = size - <span class="c-num">5</span>
+
+
+<span class="c-kw">def</span> vishal(t, size, repeat):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(repeat):
+        Circles(t, size)
+        t.right(<span class="c-num">360</span> / repeat)
+
+
+vishal(t2, <span class="c-num">120</span>, <span class="c-num">10</span>)
+
+t3 = turtle.Turtle()
+t3.speed(<span class="c-num">0</span>)
+t3.color(<span class="c-str">'red'</span>)
+rotate = int(<span class="c-num">90</span>)
+
+
+<span class="c-kw">def</span> Circles(t, size):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">4</span>):
+        t.circle(size)
+        size = size - <span class="c-num">19</span>
+
+
+<span class="c-kw">def</span> vishal(t, size, repeat):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(repeat):
+        Circles(t, size)
+        t.right(<span class="c-num">360</span> / repeat)
+
+
+vishal(t3, <span class="c-num">80</span>, <span class="c-num">10</span>)
+
+t4 = turtle.Turtle()
+t4.speed(<span class="c-num">0</span>)
+t4.color(<span class="c-str">'cyan'</span>)
+rotate = int(<span class="c-num">90</span>)
+
+
+<span class="c-kw">def</span> Circles(t, size):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(<span class="c-num">4</span>):
+        t.circle(size)
+        size = size - <span class="c-num">20</span>
+
+
+<span class="c-kw">def</span> vishal(t, size, repeat):
+    <span class="c-kw">for</span> i <span class="c-kw">in</span> <span class="c-kw">range</span>(repeat):
+        Circles(t, size)
+        t.right(<span class="c-num">360</span> / repeat)
+
+
+vishal(t4, <span class="c-num">40</span>, <span class="c-num">10</span>)
+turtle.done</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
 function circles(t, size, count, step){
   for(let i=0; i<count; i++){
     t.circle(size);
@@ -19,8 +146,8 @@ function vishal(t, size, repeat, count, step){
     t.right(360/repeat);
   }
 }
-function draw(){
-  const t = new Turtle('c', {scale: 0.85});
+const PAGE_OPTS = {scale: 0.85};
+function draw(t){
   t.bgcolor('black');
   t.color('white');
   vishal(t, 200, 10, 10, 4);
@@ -33,6 +160,25 @@ function draw(){
   t.color('cyan');
   vishal(t, 40, 10, 4, 20);
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv=document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
