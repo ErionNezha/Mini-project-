@@ -1,14 +1,91 @@
 <!DOCTYPE html>
 <!-- Created by Erion Nezha — © 2026 All rights reserved -->
-<html lang="sq"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>20. Syri i keq — 24 Mini Projekte</title><link rel="stylesheet" href="style.css"></head>
-<body><header class="top"><a class="back" href="index.html">← Kthehu</a><h1><span class="num">20</span>Syri i keq</h1></header>
-<main><p class="desc">Syri mbrojtës me rrathë të kuq e të zinj.</p><div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
-<div class="controls"><button id="replay">↻ Rivizato</button></div></main>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>20. Syri i keq — 24 Mini Projekte</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top proj-top">
+<a class="back" href="index.html">← Kthehu</a>
+<h1><span class="num">20</span>Syri i keq</h1>
+<div class="proj-controls">
+<label class="speed-ctl" title="Shpejtësia e vizatimit">🐢 <input type="range" id="speed" min="1" max="400" value="60"> 🐇</label>
+<button class="btn-redraw" id="redrawBtn" onclick="redraw()">🔄 Rivizato</button>
+<span class="draw-status" id="drawStatus"></span>
+</div>
+</header>
+<main class="proj-main">
+<p class="desc">Syri mbrojtës me rrathë të kuq e të zinj.</p>
+<div class="proj-layout">
+<div class="stage"><canvas id="c" width="900" height="700"></canvas></div>
+<aside class="code-panel">
+<div class="code-head"><span>🐍 Kodi Python origjinal</span><span class="code-file">Project (EX) 20.py</span></div>
+<pre><code id="pycode"><span class="c-kw">from</span> turtle <span class="c-kw">import</span>*
+<span class="c-kw">import</span> turtle
+t = turtle.Turtle()
+
+<span class="c-kw">def</span> draw_circle(color,radius,x,y):
+
+    t.penup()
+    t.fillcolor(color)
+    t.goto(x,y)
+    t.pendown()
+    t.begin_fill()
+    t.circle(radius)
+    t.end_fill()
+
+t=turtle.Turtle()
+t.color(<span class="c-str">'red'</span>,<span class="c-str">'blue'</span>)
+<span class="c-kw">def</span> eye():
+    
+    draw_circle(<span class="c-str">"Black"</span>,<span class="c-num">210</span>,-<span class="c-num">22</span>,-<span class="c-num">150</span>)
+    draw_circle(<span class="c-str">"red"</span>,<span class="c-num">196</span>,-<span class="c-num">20</span>,-<span class="c-num">135</span>)
+    draw_circle(<span class="c-str">"black"</span>,<span class="c-num">50</span>,-<span class="c-num">20</span>,-<span class="c-num">15</span>)
+
+    t.color(<span class="c-str">'black'</span>,<span class="c-str">'blue'</span>)
+
+    draw_circle(<span class="c-str">"'Balck"</span>,<span class="c-num">35</span>,-<span class="c-num">120</span>,-<span class="c-num">67</span>)
+    t.color(<span class="c-str">'red'</span>,<span class="c-str">'blue'</span>)
+    draw_circle(<span class="c-str">"Red"</span>,<span class="c-num">35</span>,-<span class="c-num">130</span>,-<span class="c-num">65</span>)
+    t.color(<span class="c-str">'black'</span>,<span class="c-str">'blue'</span>)
+    draw_circle(<span class="c-str">'Black'</span>,<span class="c-num">34</span>,-<span class="c-num">120</span>,-<span class="c-num">60</span>)
+
+    draw_circle(<span class="c-str">'black'</span>,<span class="c-num">35</span>,<span class="c-num">98</span>,-<span class="c-num">10</span>)
+    t.color(<span class="c-str">'red'</span>,<span class="c-str">'blue'</span>)
+    draw_circle(<span class="c-str">'red'</span>,<span class="c-num">35</span>,<span class="c-num">85</span>,<span class="c-num">0</span>)
+    t.color(<span class="c-str">'black'</span>,<span class="c-str">'blue'</span>)
+    draw_circle(<span class="c-str">'black'</span>,<span class="c-num">34</span>,<span class="c-num">100</span>,-<span class="c-num">10</span>)
+
+    draw_circle(<span class="c-str">'black'</span>,<span class="c-num">35</span>,-<span class="c-num">40</span>,<span class="c-num">155</span>)
+    t.color(<span class="c-str">'red'</span>,<span class="c-str">'blue'</span>)
+    draw_circle(<span class="c-str">'red'</span>,<span class="c-num">35</span>,-<span class="c-num">55</span>,<span class="c-num">150</span>)
+    t.color(<span class="c-str">'Black'</span>,<span class="c-str">'blue'</span>)
+    draw_circle(<span class="c-str">'black'</span>,<span class="c-num">34</span>,-<span class="c-num">37</span>,<span class="c-num">148</span>)
+    turtle.hideturtle()
+
+
+<span class="c-kw">if</span> __name__ == <span class="c-str">'__main__'</span>:
+
+    screensize(<span class="c-num">8000</span>,<span class="c-num">6000</span>,<span class="c-str">"#f0f0f0"</span>)
+    turtle.Screen().bgcolor(<span class="c-str">"#dceaf6"</span>)
+
+    pensize(<span class="c-num">3</span>)
+    speed(<span class="c-num">9</span>)
+eye()
+</code></pre>
+</aside>
+</div>
+</main>
 <footer>Krijuar nga <strong>Erion Nezha</strong> — © 2026. Të gjitha të drejtat e rezervuara.</footer>
-<script src="turtle.js"></script><script>
-function draw(){
-  const t = new Turtle('c', {scale: 1, ox: 21, oy: 85});
+<script>window.__ERRORS=[];addEventListener("error",e=>window.__ERRORS.push(e.message));</script>
+<script src="turtle.js"></script>
+<script>
+
+const PAGE_OPTS = {scale: 1, ox: 21, oy: 85};
+function draw(t){
   t.bgcolor('#dceaf6');
   function draw_circle(color, radius, x, y){
     t.penup();
@@ -34,6 +111,25 @@ function draw(){
   draw_circle('black',  34,  -37, 148);
   t.hideturtle();
 }
-draw();
-document.getElementById('replay').onclick = () => { const cv = document.getElementById('c'); cv.getContext('2d').clearRect(0,0,cv.width,cv.height); draw(); };
-</script></body></html>
+function setStatus(txt, live){
+  const el = document.getElementById('drawStatus');
+  el.textContent = txt;
+  el.classList.toggle('live', !!live);
+}
+function redraw(){
+  Turtle.stop();
+  Turtle._instances['c'] = [];
+  const t = new Turtle('c', PAGE_OPTS);
+  t.clear();
+  Turtle.startRecord('c');
+  try { draw(t); } finally { Turtle.stopRecord(); }
+  setStatus('Duke vizatuar…', true);
+  Turtle.onDone = () => setStatus('U krye ✓', false);
+  Turtle.play();
+}
+document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
+Turtle.setSpeed(60);
+redraw();
+</script>
+</body>
+</html>
