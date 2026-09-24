@@ -6,6 +6,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>9. Spiralë cyan — 24 Mini Projekte</title>
 <link rel="stylesheet" href="style.css">
+<style>
+#kb-panel{max-width:1100px;margin:48px auto;padding:0 20px;font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#e8eef4}
+#kb-panel h2{font-size:1.5rem;margin-bottom:6px}
+#kb-panel .kb-sub{color:#8fa3b8;font-size:.92rem;margin-bottom:14px}
+#kb-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+#kb-tabs button{background:#16202c;border:1px solid #2b3b4d;color:#cfe0f0;border-radius:8px;padding:7px 13px;font-size:.83rem;cursor:pointer}
+#kb-tabs button:hover{border-color:#00d4ff}
+#kb-tabs button.kb-active{background:#00d4ff;border-color:#00d4ff;color:#06121c;font-weight:700}
+#kb-code{background:#0b1118;border:1px solid #22303f;border-radius:12px;padding:18px;max-height:520px;overflow:auto;font-family:ui-monospace,Consolas,monospace;font-size:.82rem;line-height:1.55;white-space:pre-wrap;word-break:break-word;color:#d5e5f2}
+#kb-repo-link{margin-top:10px;font-size:.85rem}
+#kb-repo-link a{color:#00d4ff}
+footer.kb-footer{text-align:center;padding:28px 16px 40px;color:#8fa3b8;font-size:.9rem}
+footer.kb-footer strong{color:#e8eef4}
+</style>
 </head>
 <body>
 <header class="top proj-top">
@@ -75,6 +89,36 @@ function redraw(){
 document.getElementById('speed').addEventListener('input', e => Turtle.setSpeed(+e.target.value));
 Turtle.setSpeed(60);
 redraw();
+</script>
+
+<section id="kb-panel">
+<!-- Created by Erion Nezha — © 2026 All rights reserved -->
+<h2>&#128187; Kodi Burim</h2>
+<p class="kb-sub">File-t real&euml; t&euml; projektit &mdash; kliko nj&euml; file p&euml;r ta par&euml; kodin:</p>
+<div id="kb-tabs"></div>
+<pre id="kb-code">Zgjidh nj&euml; file m&euml; lart p&euml;r t&euml; par&euml; kodin burim.</pre>
+<p id="kb-repo-link"><a href="https://github.com/ErionNezha/Mini-project-" target="_blank" rel="noopener">&#128193; Shiko repo-n n&euml; GitHub</a></p>
+</section>
+<footer class="kb-footer">Krijuar nga <strong>Erion Nezha</strong> &mdash; &copy; 2026</footer>
+<script>
+(function(){
+  var FILES=["Project (EX) 9.py"];
+  var tabs=document.getElementById('kb-tabs'), code=document.getElementById('kb-code');
+  function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+  function show(path,btn){
+    code.textContent='Duke lexuar '+path+' ...';
+    fetch(encodeURI(path)).then(function(r){if(!r.ok)throw 0;return r.text();}).then(function(t){
+      code.innerHTML=esc(t);
+      var bs=tabs.querySelectorAll('button');for(var i=0;i<bs.length;i++)bs[i].classList.remove('kb-active');
+      if(btn)btn.classList.add('kb-active');
+    }).catch(function(){code.textContent='Deshtoi leximi i file-it '+path;});
+  }
+  FILES.forEach(function(p){
+    var b=document.createElement('button');b.type='button';b.textContent=p.split('/').pop();
+    b.onclick=function(){show(p,b);};tabs.appendChild(b);
+  });
+  if(FILES.length)show(FILES[0],tabs.querySelector('button'));
+})();
 </script>
 </body>
 </html>
